@@ -114,6 +114,7 @@ body>main>article>header {
 /* main header times */
 
 body>main>article>header>time {
+	padding: 0.4ch;
 	grid-area: time;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -128,9 +129,9 @@ body>main>article>header>time {
 }
 
 body main article>header>time span {margin: auto;}
-body>main>article>header>time .day {grid-area: day; font-size: 1.5em;}
-body>main>article>header>time .month {grid-area: month;}
-body>main>article>header>time .year {grid-area: year;}
+body>main>article>header>time .day {grid-area: day; font-size: 1.7em;}
+body>main>article>header>time .month {grid-area: month; font-size: 0.8em;}
+body>main>article>header>time .year {grid-area: year; font-size: 0.8em;}
 
 /* main header titles */
 
