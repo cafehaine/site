@@ -98,10 +98,55 @@ body>main>article {
 	box-shadow: 0 0.7ch 1ch rgba(0,0,0,0.2);
 }
 
+/* main headers */
+
 body>main>article>header {
 	background: #933b19;
 	border-radius: 1ch 1ch 0 0;
+	display: grid;
+	grid-template-columns: 7ch 1fr;
+	grid-template-rows: 5ch 2ch;
+	grid-template-areas:
+		"time title"
+		"time author";
 }
+
+/* main header times */
+
+body>main>article>header>time {
+	grid-area: time;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: min-content 1fr min-content;
+	grid-template-areas:
+		"month"
+		"day"
+		"year";
+	background: #efb097;
+	color: #000000;
+	border-radius: 1ch 0 0 0;
+}
+
+body main article>header>time span {margin: auto;}
+body>main>article>header>time .day {grid-area: day; font-size: 1.5em;}
+body>main>article>header>time .month {grid-area: month;}
+body>main>article>header>time .year {grid-area: year;}
+
+/* main header titles */
+
+body>main>article>header>h2 {
+	margin: auto;
+	padding: 0;
+}
+
+/* main header authors */
+
+body>main>article>header>cite {
+	text-align: right;
+	padding: 0 1ch 0 0;
+}
+
+/* main contents */
 
 body>main>article>main {
 	padding: 2ch;
