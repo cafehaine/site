@@ -25,6 +25,11 @@ body {
 	overflow: hidden;
 }
 
+::selection {
+	background: var(--text-color);
+	color: var(--site-background);
+}
+
 h1 {font-size: 2.2rem;}
 h2 {font-size: 2.0rem;}
 h3 {font-size: 1.8rem;}
@@ -34,11 +39,11 @@ h6 {font-size: 1.2rem;}
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Cantarell Light";
-	padding-bottom: 0.6em;
+	padding-bottom: 0.8em;
 }
 
 p {
-	padding-bottom: 0.6em;
+	padding-bottom: 0.8em;
 }
 
 ul {
@@ -54,6 +59,19 @@ ul.icon_list li {
 	list-style: none;
 	display: inline;
 	padding: 0 2px;
+}
+
+/**********/
+/* Inputs */
+/**********/
+
+input {
+	background: var(--elements-background-darker);
+	color: var(--text-color);
+	border: none;
+	border-bottom: 1px solid var(--text-color);
+	padding: 0.2em 0.4em;
+	font-size: inherit;
 }
 
 /**********/
@@ -90,6 +108,27 @@ body>nav {
 	grid-area: nav;
 	overflow: hidden auto;
 	background: var(--elements-background);
+}
+
+body>nav>label.search {
+	width: calc(100% - 4ch);
+	display: block;
+	margin: 0 2ch;
+	display: grid;
+	grid-template-columns: 1fr 3ch;
+	grid-template-rows: 3ch;
+	border-bottom: 1px solid var(--text-color);
+	background: var(--elements-background-darker);
+}
+
+body>nav>label.search>i {
+	margin: auto;
+}
+
+body>nav>label.search>input {
+	width: 100%;
+	background: none transparent;
+	border: none;
 }
 
 /********/
@@ -161,11 +200,12 @@ body>main>article>header>cite {
 /* main contents */
 
 body>main>article>main {
-	padding: 2ch;
+	padding: 4ch;
 }
 
 body>main>article>main p {
 	text-align: justify;
+	text-indent: 2em;
 }
 
 /* main footers */
@@ -183,3 +223,4 @@ body>main>article>footer ul, body>main>article>footer>section, body>main>article
 body>main>article>footer ul.icon_list {
 	float: right;
 }
+
