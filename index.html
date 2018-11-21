@@ -12,21 +12,26 @@
 		</header>
 		<nav>
 			<label aria-label="Search the blog" class="search"><input type="search" placeholder="Search the blog"><i aria-hidden="true" class="fa fa-search"></i></label>
-			<ul>
+			<menu>
 				<li><a href="#">Homepage</a></li>
-				<li><a href="#">Blog</a></li>
+				<li class="sub"><a href="#">Blog</a><label for="menu_blog" aria-hidden="true"><i class="fa fa-arrow-down"></i></label><input id="menu_blog" aria-hidden="true" type="checkbox">
+					<menu aria-hidden="false">
+						<li><a href="#">Lastest articles</a></li>
+						<li><a href="#">Browse by tags</a></li>
+					</menu>
+				</li>
 				<li><a href="#">Projects</a></li>
 				<li><a href="#">Résumé</a></li>
-			</ul>
+			</menu>
 		</nav>
 		<main class="blog">
 			<article>
 				<header>
-					<time><span class="day">16</span> <span class="month">March</span> <span class="year">2017</span></time>
+					<div class="time"><span class="day">16</span> <span class="month">March</span> <span class="year">2017</span></div>
 					<h2>The art of multi-threading</h2>
 					<cite>by <a href="#">CaféHaine</a></cite>
 				</header>
-				<main>
+				<div class="content">
 					<p>If you've ever wondered how to get more performance out of your programs, without using some specific language tricks, you've probably heard of multithreading. I'll try and explain in a really basic way how it works, and then show you when it can apply, how NOT to do it, and some final tips on how to use it.</p>
 
 					<h3>What is multithreading</h3>
@@ -46,16 +51,16 @@
 					<p>Cinebench has a huge number of computations to do, so the total workload is divided in about 200 "tasks" to do, and each thread will work on a new task as their is finished.</p>
 					<p>MassResizer is supposed to handle about 200 files, so I simply divided the number of files by the number of threads, which is much more simpler to do than Cinebench's way, but it also means that when approaching the end, fewer threads are working, as some may have finished their part faster.</p>
 					<p>Anyway, I hope this helped you in some way, and I hope you will have less troubles realising your next multithreaded application.</p>
-				</main>
+				</div>
 				<footer>
-					<section>
+					<div class="tag_container">
 						<span aria-hidden="true">Tags:</span>
 						<ul class="tags" title="Article tags">
 							<li><a href="#">Programming</a></li>
 							<li><a href="#">CSharp</a></li>
 							<li><a href="#">Multi-Threading</a></li>
 						</ul>
-					</section>
+					</div>
 					<ul class="icon_list" title="Social links">
 						<li><a aria-label="Share this article on twitter" href="https://twitter.com/intent/tweet?text=Article%20Title&url=http%3A%2F%2F127.0.0.1%2F" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 						<li><a aria-label="Share this article on reddit" href="https://reddit.com/submit?url=http%3A%2F%2F127.0.0.1%2F&title=Article%20Title" target="_blank"><i class="fa fa-reddit-alien"></i></a></li>

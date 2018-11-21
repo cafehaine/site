@@ -110,6 +110,8 @@ body>nav {
 	background: var(--elements-background);
 }
 
+/* navigation search bar */
+
 body>nav>label.search {
 	width: calc(100% - 4ch);
 	display: block;
@@ -129,6 +131,21 @@ body>nav>label.search>input {
 	width: 100%;
 	background: none transparent;
 	border: none;
+}
+
+/* navigation menu */
+
+body>nav>menu a {
+	text-decoration: none;
+}
+
+body>nav>menu>li>input[type=checkbox]~menu {
+	display: none;
+	background: var(--elements-background-darker);
+}
+
+body>nav>menu>li>input[type=checkbox]:checked~menu {
+	display: block;
 }
 
 /********/
@@ -164,7 +181,7 @@ body>main>article>header {
 
 /* main header times */
 
-body>main>article>header>time {
+body>main>article>header>div.time {
 	padding: 0.4ch;
 	grid-area: time;
 	display: grid;
@@ -178,10 +195,10 @@ body>main>article>header>time {
 	border-radius: 1ch 0 0 0;
 }
 
-body main article>header>time span {margin: auto;}
-body>main>article>header>time .day {grid-area: day; font-size: 1.7em;}
-body>main>article>header>time .month {grid-area: month; font-size: 0.8em;}
-body>main>article>header>time .year {grid-area: year; font-size: 0.8em;}
+body main article>header>.time span {margin: auto;}
+body>main>article>header>.time .day {grid-area: day; font-size: 1.7em;}
+body>main>article>header>.time .month {grid-area: month; font-size: 0.8em;}
+body>main>article>header>.time .year {grid-area: year; font-size: 0.8em;}
 
 /* main header titles */
 
@@ -199,11 +216,11 @@ body>main>article>header>cite {
 
 /* main contents */
 
-body>main>article>main {
+body>main>article>.content {
 	padding: 4ch;
 }
 
-body>main>article>main p {
+body>main>article>.content p {
 	text-align: justify;
 	text-indent: 2em;
 }
@@ -214,6 +231,10 @@ body>main>article>footer {
 	background: var(--elements-background-darker);
 	border-radius: 0 0 1ch 1ch;
 	padding: 0.8ch;
+}
+
+body>main>article>footer>div {
+	display: inline-block;
 }
 
 body>main>article>footer ul, body>main>article>footer>section, body>main>article>footer ul.tags>li {
