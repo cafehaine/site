@@ -115,7 +115,7 @@ body>nav {
 body>nav>label.search {
 	width: calc(100% - 4ch);
 	display: block;
-	margin: 0 2ch;
+	margin: 0 2ch 1ch 2ch;
 	display: grid;
 	grid-template-columns: 1fr 3ch;
 	grid-template-rows: 3ch;
@@ -135,16 +135,41 @@ body>nav>label.search>input {
 
 /* navigation menu */
 
-body>nav>menu a {
+body>nav menu a {
 	text-decoration: none;
+	line-height: 2rem;
+	padding-left: 1ch;
 }
 
-body>nav>menu>li>input[type=checkbox]~menu {
+body>nav>menu menu {
+	padding-left: 1ch;
+}
+
+body>nav menu label {
+	line-height: 2rem;
+	text-align: center;
+}
+
+body>nav menu li {
+	display: grid;
+	grid-template-columns: 1fr 2rem;
+	grid-template-rows: 2rem;
+}
+
+body>nav menu li:not(.sub)>a, body>nav menu {
+	grid-column: 1/3
+}
+
+body>nav menu li>input[type=checkbox] {
+	display: none;
+}
+
+body>nav menu li>input[type=checkbox]~menu {
 	display: none;
 	background: var(--elements-background-darker);
 }
 
-body>nav>menu>li>input[type=checkbox]:checked~menu {
+body>nav menu li>input[type=checkbox]:checked~menu {
 	display: block;
 }
 
