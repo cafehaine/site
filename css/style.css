@@ -5,15 +5,15 @@
 }
 
 body {
-	--site-background: #260404;
-	--elements-background: #5e0c0c;
+	background: #222222 url("background_1.jpg") center no-repeat;
+	background-size: cover;
+	--elements-background: rgba(0,0,0,0.5);
 	--text-color: #ffffff;
-	--elements-background-darker: #470909;
-	--elements-background-lighter: #750f0f;
+	--elements-background-darker: rgba(0,0,0,0.5);
+	--elements-background-lighter: rgba(1,1,1,0.5);
 	display: grid;
 	grid-template-columns: 30ch 1fr;
 	grid-template-rows: min-content 1fr min-content;
-	background: var(--site-background);
 	color: var(--text-color);
 	font-family: "Cantarell";
 	font-size: 1.1em;
