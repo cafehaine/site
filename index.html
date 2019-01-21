@@ -7,10 +7,13 @@
 		<link rel="stylesheet" href="css/fork-awesome.min.css">
 	</head>
 	<body>
+		<input type="checkbox" aria-hidden="true" id="toggle_nav" autocomplete="nope">
 		<header>
+			<label for="toggle_nav">menu</label>
 			<h1>CaféHaine</h1>
 		</header>
 		<nav>
+			<label for="toggle_nav" aria-hidden="true">close</label>
 			<label aria-label="Search the blog" class="search"><input type="search" placeholder="Search the blog"><i aria-hidden="true" class="fa fa-search"></i></label>
 			<menu>
 				<li><a href="#">Homepage</a></li>
