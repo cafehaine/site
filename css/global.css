@@ -238,54 +238,6 @@ body>main>article {
 	box-shadow: 0 0.7ch 1ch rgba(0,0,0,0.2);
 }
 
-/* main headers */
-
-body>main>article>header {
-	background: var(--elements-background-darker);
-	border-radius: 1ch 1ch 0 0;
-	display: grid;
-	grid-template-columns: 7ch 1fr;
-	grid-template-rows: 5ch 2ch;
-	grid-template-areas:
-		"time title"
-		"time author";
-}
-
-/* main header times */
-
-body>main>article>header>div.time {
-	padding: 0.4ch;
-	grid-area: time;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: min-content 1fr min-content;
-	grid-template-areas:
-		"month"
-		"day"
-		"year";
-	background: var(--elements-background-lighter);
-	border-radius: 1ch 0 0 0;
-}
-
-body main article>header>.time span {margin: auto;}
-body>main>article>header>.time .day {grid-area: day; font-size: 1.7em;}
-body>main>article>header>.time .month {grid-area: month; font-size: 0.8em;}
-body>main>article>header>.time .year {grid-area: year; font-size: 0.8em;}
-
-/* main header titles */
-
-body>main>article>header>h2 {
-	margin: auto;
-	padding: 0;
-}
-
-/* main header authors */
-
-body>main>article>header>cite {
-	text-align: right;
-	padding: 0 1ch 0 0;
-}
-
 /* main contents */
 
 body>main>article>.content {
@@ -295,25 +247,5 @@ body>main>article>.content {
 body>main>article>.content p {
 	text-align: justify;
 	text-indent: 2em;
-}
-
-/* main footers */
-
-body>main>article>footer {
-	background: var(--elements-background-darker);
-	border-radius: 0 0 1ch 1ch;
-	padding: 0.8ch;
-}
-
-body>main>article>footer>div {
-	display: inline-block;
-}
-
-body>main>article>footer ul, body>main>article>footer>section, body>main>article>footer ul.tags>li {
-	display: inline;
-}
-
-body>main>article>footer ul.icon_list {
-	float: right;
 }
 
