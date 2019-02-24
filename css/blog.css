@@ -14,7 +14,6 @@ body>main>article>header {
 /* main header times */
 
 body>main>article>header>div.time {
-	padding: 0.4ch;
 	grid-area: time;
 	display: grid;
 	grid-template-columns: 1fr;
