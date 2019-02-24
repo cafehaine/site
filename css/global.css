@@ -8,6 +8,7 @@ body {
 	background: #222222 url("background_1.jpg") center no-repeat;
 	background-size: cover;
 	--elements-background: rgba(0,0,0,0.5);
+	--site-background: rgb(42, 65, 102);
 	--text-color: #ffffff;
 	--elements-background-darker: rgba(0,0,0,0.5);
 	--elements-background-lighter: rgba(1,1,1,0.5);
@@ -110,6 +111,12 @@ body>header {
 	padding: 0.5em;
 }
 
+@media screen and (max-width: 80ch) {
+	body>header {
+		box-shadow: 0 0 0.4rem black;
+	}
+}
+
 body>header>h1 {
 	padding: 0;
 }
@@ -166,8 +173,13 @@ body>nav>label.search {
 	display: grid;
 	grid-template-columns: 1fr 3ch;
 	grid-template-rows: 3ch;
-	border-bottom: 1px solid var(--text-color);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	transition: border-bottom-color 0.2s;
 	background: var(--elements-background-darker);
+}
+
+body>nav>label.search:focus-within {
+	border-bottom-color: currentColor;
 }
 
 body>nav>label.search>i {
