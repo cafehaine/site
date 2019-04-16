@@ -43,7 +43,7 @@ body {
 	display: none;
 }
 
-@media screen and (min-width: 80ch) {
+@media screen and not (max-width: 80ch) {
 	label[for="toggle_nav"] {
 		display: none;
 	}
