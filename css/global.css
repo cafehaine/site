@@ -17,7 +17,7 @@ body {
 	grid-template-rows: min-content 1fr min-content;
 	color: var(--text-color);
 	font-family: "Cantarell";
-	font-size: 1.1em;
+	font-size: 1.0em;
 	grid-template-areas:
 		"header main"
 		"nav    main"
@@ -259,5 +259,6 @@ body>main>article>.content {
 body>main>article>.content p {
 	text-align: justify;
 	text-indent: 2em;
+	line-height: 1.5em;
 }
 
