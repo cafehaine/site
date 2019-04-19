@@ -5,10 +5,9 @@ body>main>article>header {
 	border-radius: 1ch 1ch 0 0;
 	display: grid;
 	grid-template-columns: 7ch 1fr;
-	grid-template-rows: 5ch 2ch;
+	grid-template-rows: 7ch;
 	grid-template-areas:
-		"time title"
-		"time author";
+		"time title";
 }
 
 /* main header times */
@@ -36,13 +35,6 @@ body>main>article>header>.time .year {grid-area: year; font-size: 0.8em;}
 body>main>article>header>h2 {
 	margin: auto;
 	padding: 0;
-}
-
-/* main header authors */
-
-body>main>article>header>cite {
-	text-align: right;
-	padding: 0 1ch 0 0;
 }
 
 /* main footers */
