@@ -12,41 +12,25 @@ body {
 	--text-color: #ffffff;
 	--elements-background-darker: rgba(0,0,0,0.5);
 	--elements-background-lighter: rgba(1,1,1,0.5);
-	display: grid;
-	grid-template-columns: 30ch 1fr;
-	grid-template-rows: min-content 1fr min-content;
 	color: var(--text-color);
 	font-family: "Cantarell";
 	font-size: 1.0em;
-	grid-template-areas:
-		"header main"
-		"nav    main"
-		"footer main";
 	height: 100vh;
 	overflow: hidden;
-}
-
-@media screen and (max-width: 80ch) {
-	body {
-		grid-template-columns: 100% 100%;
-		grid-template-areas:
-			"nav    header"
-			"nav    main"
-			"footer main";
-		transform: translateX(-100%);
-	}
+	display: grid;
+	grid-template-columns: 100% 100%;
+	grid-template-rows: min-content 1fr min-content;
+	grid-template-areas:
+		"nav    header"
+		"nav    main"
+		"footer main";
+	transform: translateX(-100%);
 }
 
 /* Nav toggle */
 
 #toggle_nav {
 	display: none;
-}
-
-@media screen and not (max-width: 80ch) {
-	label[for="toggle_nav"] {
-		display: none;
-	}
 }
 
 /* Text */
@@ -109,12 +93,7 @@ body>header {
 	background: var(--elements-background);
 	text-align: center;
 	padding: 0.5em;
-}
-
-@media screen and (max-width: 80ch) {
-	body>header {
-		box-shadow: 0 0 0.4rem black;
-	}
+	box-shadow: 0 0 0.4rem black;
 }
 
 body>header>h1 {
@@ -127,20 +106,14 @@ body>header>h1 {
 
 body>footer {
 	grid-area: footer;
-	background: var(--elements-background);
+	background: #111111;
 	text-align: center;
 	padding: 0.4em 0 0 0;
 	transition: transform 0.2s;
 }
 
-@media screen and (max-width: 80ch) {
-	body > footer {
-		background: #111111;
-	}
-
-	#toggle_nav:checked ~ footer {
-		transform: translateX(100%);
-	}
+#toggle_nav:checked ~ footer {
+	transform: translateX(100%);
 }
 
 /**************/
@@ -150,18 +123,12 @@ body>footer {
 body>nav {
 	grid-area: nav;
 	overflow: hidden auto;
-	background: var(--elements-background);
+	background: #111111;
 	transition: transform 0.2s;
 }
 
-@media screen and (max-width: 80ch) {
-	body > nav {
-		background: #111111;
-	}
-
-	#toggle_nav:checked ~ nav {
-		transform: translateX(100%);
-	}
+#toggle_nav:checked ~ nav {
+	transform: translateX(100%);
 }
 
 /* navigation search bar */
