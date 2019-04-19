@@ -17,7 +17,7 @@ body>main>article>header>div.time {
 	grid-area: time;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: min-content 1fr min-content;
+	grid-template-rows: 1fr min-content 1fr;
 	grid-template-areas:
 		"month"
 		"day"

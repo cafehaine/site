@@ -140,13 +140,9 @@ body>nav>label.search {
 	display: grid;
 	grid-template-columns: 1fr 3ch;
 	grid-template-rows: 3ch;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 0.8ch;
 	transition: border-bottom-color 0.2s;
 	background: var(--elements-background-darker);
-}
-
-body>nav>label.search:focus-within {
-	border-bottom-color: currentColor;
 }
 
 body>nav>label.search>i {
