@@ -89,6 +89,7 @@ input {
 /*********/
 
 body>header {
+	position: relative;
 	grid-area: header;
 	background: var(--elements-background);
 	text-align: center;
@@ -98,6 +99,13 @@ body>header {
 
 body>header>h1 {
 	padding: 0;
+}
+
+body>header label {
+	position: absolute;
+	left: 1rem;
+	top: 0.5rem;
+	font-size: 2.2rem;
 }
 
 /**********/
