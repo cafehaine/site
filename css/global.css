@@ -139,7 +139,15 @@ body>nav {
 	transform: translateX(100%);
 }
 
-/* navigation search bar */
+/* nav toggle */
+
+body>nav>label[for=toggle_nav] {
+	padding: 0.5rem 1rem;
+	font-size: 2.2rem;
+	display: block;
+}
+
+/* search bar */
 
 body>nav>label.search {
 	width: calc(100% - 4ch);

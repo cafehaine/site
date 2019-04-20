@@ -7,7 +7,7 @@ body {
 	transform: none;
 }
 
-label[for=toggle_nav] {
+body>nav>label[for=toggle_nav], label[for=toggle_nav] {
 	display: none;
 }
 
