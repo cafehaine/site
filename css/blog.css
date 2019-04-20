@@ -56,6 +56,10 @@ body>main>article>footer>* * {
 	display: inline;
 }
 
+body>main>article>footer ul {
+	padding-bottom: 0;
+}
+
 body>main>article ul.tags li {
 	margin: 0 0.4ch;
 }
