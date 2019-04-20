@@ -80,7 +80,7 @@ input {
 	color: var(--text-color);
 	border: none;
 	border-bottom: 1px solid var(--text-color);
-	padding: 0.2em 0.4em;
+	padding: 0.4em 0.8em;
 	font-size: inherit;
 }
 
@@ -149,7 +149,7 @@ body>nav>label[for=toggle_nav] {
 
 /* search bar */
 
-body>nav>label.search {
+body>nav label.search {
 	width: calc(100% - 4ch);
 	display: block;
 	margin: 0 2ch 1ch 2ch;
@@ -161,11 +161,11 @@ body>nav>label.search {
 	background: var(--elements-background-darker);
 }
 
-body>nav>label.search>i {
+body>nav label.search>i {
 	margin: auto;
 }
 
-body>nav>label.search>input {
+body>nav label.search>input {
 	width: 100%;
 	background: none transparent;
 	border: none;
