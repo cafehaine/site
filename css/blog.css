@@ -33,8 +33,12 @@ body>main>article>header>.time .year {grid-area: year; font-size: 0.8em;}
 /* main header titles */
 
 body>main>article>header>h2 {
-	margin: auto;
+	margin: auto 1ch;
 	padding: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 2ch);
 }
 
 /* main footers */
