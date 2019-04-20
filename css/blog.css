@@ -53,6 +53,10 @@ body>main>article>footer ul, body>main>article>footer>section, body>main>article
 	display: inline;
 }
 
+body>main>article ul.tags li {
+	margin: 0 1ch;
+}
+
 body>main>article>footer ul.icon_list {
 	float: right;
 }

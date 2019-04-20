@@ -106,7 +106,7 @@ body>header>h1 {
 
 body>footer {
 	grid-area: footer;
-	background: #111111;
+	background: #222222;
 	text-align: center;
 	padding: 0.4em 0 0 0;
 	transition: transform 0.2s;
@@ -159,7 +159,8 @@ body>nav>label.search>input {
 
 body>nav menu a {
 	text-decoration: none;
-	line-height: 2rem;
+	line-height: 2.2rem;
+	font-size: 1.3rem;
 	padding-left: 1ch;
 }
 
@@ -168,14 +169,14 @@ body>nav>menu menu {
 }
 
 body>nav menu label {
-	line-height: 2rem;
+	line-height: 2.2rem;
 	text-align: center;
 }
 
 body>nav menu li {
 	display: grid;
 	grid-template-columns: 1fr 2rem;
-	grid-template-rows: 2rem;
+	grid-template-rows: 2.2rem;
 }
 
 body>nav menu li:not(.sub)>a, body>nav menu {
@@ -216,7 +217,7 @@ body>main>article {
 /* main contents */
 
 body>main>article>.content {
-	padding: 4ch;
+	padding: 3ch;
 }
 
 body>main>article>.content p {
