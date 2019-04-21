@@ -51,10 +51,10 @@ body>main>article ul.tags li {
 }
 
 body>main>article>footer .tag_container {
-	area: tags;
+	grid-area: tags;
 }
 
 body>main>article>footer .icon_list {
-	area: social;
+	grid-area: social;
 }
 
