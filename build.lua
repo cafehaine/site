@@ -15,7 +15,6 @@ for i,v in ipairs(article_meta_files) do
 	local document_tree = marccup.to_tree(io.open(content_path))
 	articles[i] = art.new(metadata, document_tree)
 end
-
 --[[
 for i=1, #articles do
 	print(articles[i].title)
@@ -36,4 +35,4 @@ for i=1, #articles do
 	print()
 end
 ]]
-articles[2]:render_body()
+articles[3]:render_body()

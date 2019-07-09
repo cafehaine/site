@@ -86,15 +86,39 @@ local function render_text(text)
 	return table.concat(output)
 end
 
+local function render_code(code)
+	local output = {'<div class="code-block">', '<div class="lines">'}
+	_, lines = code.body:gsub("\n","")
+	for i=code.start, code.start+lines do
+		output[#output+1] = "<span>"..i.."</span>"
+	end
+	output[#output+1] = "</div>"
+
+	local temp_name = os.tmpname()
+	local temp_file = io.open(temp_name, "w")
+	temp_file:write(code.body)
+	temp_file:close()
+	lexer = code.lang or "text"
+	local pygmentize = io.popen("pygmentize -l "..lexer.." -f html "..temp_name)
+	output[#output+1] = pygmentize:read("a")
+	pygmentize:close()
+	os.remove(temp_name)
+
+	output[#output+1] = "</div>"
+	return table.concat(output)
+end
+
 function art:render_body()
 	local output = {}
 	for _,node in ipairs(self.content) do
 		if node.type == "title" then
 			output[#output+1] = ("<h%d>%s</h%d>"):format(node.level, escape(node.body), node.level)
-		else
+		elseif node.type == "text" then
 		        output[#output+1] = "<p>"
 			output[#output+1] = render_text(node.data)
 		        output[#output+1] = "</p>"
+		elseif node.type == "code" then
+			output[#output+1] = render_code(node)
 		end
 	end
 	print(table.concat(output,"\n"))

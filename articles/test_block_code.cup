@@ -1,0 +1,5 @@
+```lua:10
+while true do
+	print("hello")
+end
+```
