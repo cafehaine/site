@@ -1,37 +1,14 @@
 local marccup = require('marccup')
 local art = require('article')
-
-local posix_mkdir = require('posix').mkdir
 local glob_glob = require('posix.glob').glob
-local stat_S_ISDIR = require('posix.sys.stat').S_ISDIR
-local stat_lstat = require('posix.sys.stat').lstat
-local dirent_files = require('posix.dirent').files
-local unistd_unlink = require('posix.unistd').unlink
-local unistd_rmdir = require('posix.unistd').rmdir
 
 -------------------------
 -- Clean previous data --
 -------------------------
 
---- Remove recursively path
-local function rmr(path)
-	for file in dirent_files(path) do
-		if file ~= "." and file ~= ".." then
-			local name = path.."/"..file
-			print(name)
-			local stat = stat_lstat(name)
-			if stat_S_ISDIR(stat.st_mode) ~= 0 then
-				rmr(name)
-				unistd_rmdir(name)
-			else
-				unistd_unlink(name)
-			end
-		end
-	end
-end
-
-rmr("out")
-posix_mkdir("out")
+os.execute("rm -r out")
+os.execute("mkdir out")
+os.execute("cp -r static/* out")
 
 ----------
 -- Main --
