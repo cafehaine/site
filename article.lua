@@ -24,20 +24,18 @@ local art = {}
 art.__index = art
 art._all_articles = {}
 
-function art.new(metadata, content)
-	local self = setmetatable({}, art)
+function art.new(name)
+	local self = setmetatable(dofile(name..".lua"), art)
 
-	for k,v in pairs(metadata) do
-		self[k] = v
-	end
+	self.name = name:match("^.*/(.*)$")
+	self.content = marccup.to_tree(io.open(name..".cup"))
 
-	local d,m,y = metadata.date:match("(.*)/(.*)/(.*)")
-	self.day = tonumber(day)
+	local d,m,y = self.date:match("(.*)/(.*)/(.*)")
+	self.day = d
 	self.month = months[tonumber(m)]
-	self.year = tonumber(year)
+	self.year = y
 
-	self.content = content
-	self.excerpt = up_to_100_chars(marccup.only_text(content))
+	self.excerpt = up_to_100_chars(marccup.only_text(self.content))
 
 	self.body = self:render_body()
 	self.tag_list = self:render_tag_list()
@@ -151,7 +149,7 @@ end
 function art:render_tag_list()
 	local output = {}
 	for _,t in ipairs(self.tags) do
-		output[#output+1] = ('<li><a href="%s">%s</a></li>'):format(t, tags[t])
+		output[#output+1] = ('<li><a href="tags/%s.html">%s</a></li>'):format(t, tags[t])
 	end
 	return table.concat(output)
 end
