@@ -1,12 +1,43 @@
-local glob = require('posix.glob')
 local marccup = require('marccup')
 local art = require('article')
+
+local posix_mkdir = require('posix').mkdir
+local glob_glob = require('posix.glob').glob
+local stat_S_ISDIR = require('posix.sys.stat').S_ISDIR
+local stat_lstat = require('posix.sys.stat').lstat
+local dirent_files = require('posix.dirent').files
+local unistd_unlink = require('posix.unistd').unlink
+local unistd_rmdir = require('posix.unistd').rmdir
+
+-------------------------
+-- Clean previous data --
+-------------------------
+
+--- Remove recursively path
+local function rmr(path)
+	for file in dirent_files(path) do
+		if file ~= "." and file ~= ".." then
+			local name = path.."/"..file
+			print(name)
+			local stat = stat_lstat(name)
+			if stat_S_ISDIR(stat.st_mode) ~= 0 then
+				rmr(name)
+				unistd_rmdir(name)
+			else
+				unistd_unlink(name)
+			end
+		end
+	end
+end
+
+rmr("out")
+posix_mkdir("out")
 
 ----------
 -- Main --
 ----------
 
-local article_meta_files = glob.glob("articles/*.lua", 0) or {}
+local article_meta_files = glob_glob("articles/*.lua", 0) or {}
 local articles = {}
 
 for i,v in ipairs(article_meta_files) do
@@ -15,7 +46,7 @@ for i,v in ipairs(article_meta_files) do
 	local document_tree = marccup.to_tree(io.open(content_path))
 	articles[i] = art.new(metadata, document_tree)
 end
---[[
+
 for i=1, #articles do
 	print(articles[i].title)
 	print()
@@ -34,5 +65,3 @@ for i=1, #articles do
 	print("=====================")
 	print()
 end
-]]
-articles[3]:render_body()
