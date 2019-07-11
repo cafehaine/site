@@ -31,7 +31,7 @@ for i=1, #articles do
 	print(articles[i].excerpt)
 	print()
 	print("Tags:")
-	print(table.concat(articles[i].tags, ", "))
+	print(articles[i].tag_list)
 	print()
 	print("Similar articles:")
 	local sim = articles[i]:similar_articles()

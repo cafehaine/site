@@ -1,8 +1,24 @@
 local marccup = require('marccup')
+local tags = require('tags')
 
 local function up_to_100_chars(string)
 	return string:sub(1,100):match("^(.*)%s.-$").."…"
 end
+
+local months = {
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December"
+}
 
 local art = {}
 art.__index = art
@@ -15,8 +31,16 @@ function art.new(metadata, content)
 		self[k] = v
 	end
 
+	local d,m,y = metadata.date:match("(.*)/(.*)/(.*)")
+	self.day = tonumber(day)
+	self.month = months[tonumber(m)]
+	self.year = tonumber(year)
+
 	self.content = content
 	self.excerpt = up_to_100_chars(marccup.only_text(content))
+
+	self.body = self:render_body()
+	self.tag_list = self:render_tag_list()
 
 	art._all_articles[#art._all_articles+1] = self
 
@@ -121,7 +145,15 @@ function art:render_body()
 			output[#output+1] = render_code(node)
 		end
 	end
-	print(table.concat(output,"\n"))
+	return table.concat(output)
+end
+
+function art:render_tag_list()
+	local output = {}
+	for _,t in ipairs(self.tags) do
+		output[#output+1] = ('<li><a href="%s">%s</a></li>'):format(t, tags[t])
+	end
+	return table.concat(output)
 end
 
 return art

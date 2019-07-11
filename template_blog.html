@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>{{article.title}}</title>
+		<link rel="stylesheet" href="css/global.css">
+		<link rel="stylesheet" href="css/global_desktop.css" media="(min-width: 80ch)">
+		<link rel="stylesheet" href="css/blog.css">
+		<link rel="stylesheet" href="css/blog_desktop.css" media="(min-width: 100ch)">
+		<link rel="stylesheet" href="css/fork-awesome.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<input type="checkbox" aria-hidden="true" id="toggle_nav" autocomplete="nope">
+		<header>
+			<label for="toggle_nav" aria-hidden="true"><i class="fa fa-bars"></i></label>
+			<h1>CaféHaine</h1>
+		</header>
+		<nav>
+			<label for="toggle_nav" aria-hidden="true"><i class="fa fa-times"></i></label>
+			<form action="HAHA FAUT FIX" method="POST">
+			<label aria-label="Search the site (using DuckDuckGo)" class="search"><input type="search" placeholder="Search the site with DDG"><i aria-hidden="true" class="fa fa-search"></i></label>
+			</form>
+			<menu>
+				<li><a href="#"><i aria-hidden="true" class="fa fa-home fa-fw"></i>Homepage</a></li>
+				<li class="sub"><a href="#"><i aria-hidden="true" class="fa fa-newspaper-o fa-fw"></i>Blog</a><label for="menu_blog" aria-hidden="true"><i class="fa fa-arrow-down"></i></label><input id="menu_blog" aria-hidden="true" type="checkbox">
+					<menu aria-hidden="false">
+						<li><a href="#">Lastest articles</a></li>
+						<li><a href="#">Browse by tags</a></li>
+						<li class="sub"><a href="#">Blog</a><label for="menu_blog_blog" aria-hidden="true"><i class="fa fa-arrow-down"></i></label><input id="menu_blog_blog" aria-hidden="true" type="checkbox">
+							<menu aria-hidden="false">
+								<li><a href="#">Lastest articles</a></li>
+								<li><a href="#">Browse by tags</a></li>
+							</menu>
+						</li>
+
+					</menu>
+				</li>
+				<li><a href="#"><i aria-hidden="true" class="fa fa-cogs fa-fw"></i>Projects</a></li>
+				<li><a href="#"><i aria-hidden="true" class="fa fa-briefcase fa-fw"></i>Résumé</a></li>
+			</menu>
+		</nav>
+		<main class="blog">
+			<article>
+				<header>
+					<div class="time"><span class="day">{{article.day}}</span> <span class="month">{{article.month}}</span> <span class="year">{{article.year}}</span></div>
+					<h2>{{article.title}}</h2>
+				</header>
+				<div class="content">
+					{*article.body*}
+				</div>
+				<footer>
+					<div class="tag_container">
+						<span aria-hidden="true">Tags:</span>
+						<ul class="tags" title="Article tags">
+							{*article.tag_list*}
+							<li><a href="#">Multi-Threading</a></li>
+						</ul>
+					</div>
+					<ul class="icon_list" title="Social links">
+						<li><a aria-label="Share this article on twitter" href="https://twitter.com/intent/tweet?text=Article%20Title&url=http%3A%2F%2F127.0.0.1%2F" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a aria-label="Share this article on reddit" href="https://reddit.com/submit?url=http%3A%2F%2F127.0.0.1%2F&title=Article%20Title" target="_blank"><i class="fa fa-reddit-alien"></i></a></li>
+					</ul>
+				</footer>
+			</article>
+		</main>
+		<footer>
+			<p>© CaféHaine 2019</p>
+			<ul class="icon_list" title="Contact/Links">
+				<li><a aria-label="Email" href="mailto:cafehaine@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+				<li><a aria-label="Github" href="https://github.com/cafehaine" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+				<li><a aria-label="Twitter" href="https://twitter.com/cafehaine" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			</ul>
+			<p><a href="#">No JS!</a> − <a href="https://www.mozilla.org/firefox/new/" target="_blank">Get Firefox!</a></p>
+		</footer>
+	</body>
+</html>
