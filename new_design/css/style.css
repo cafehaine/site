@@ -5,12 +5,17 @@
 }
 
 body {
-	background: #121212;
-	color: #dfdfdf;
+	--gray0: #121212;
+	--gray1: #000000;
+	--gray2: #242424;
+	--text: #dfdfdf;
+	--text-em: #ffffff;
+	background: var(--gray0);
+	color: var(--text);
 	font-family: Cantarell, Verdana, Helvetica, Roboto, sans-serif;
 	font-size: 1.2rem;
 	line-height: 1.5em;
-	padding-top: 2rem;
+	padding-top: 4rem;
 }
 
 /**************/
@@ -22,23 +27,61 @@ nav {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 2rem;
+	height: 4rem;
+	background: var(--gray2);
+	z-index: 100;
+}
+
+nav a {
+	text-decoration: none;
+	color: var(--text-em);
+}
+
+nav>ul {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+}
+
+nav>ul>li {
+	width: 10em;
+	height: 100%;
+	position: relative;
+}
+
+nav>ul>li>a {
+	display:block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	line-height: 4rem;
+	background: var(--gray2);
 }
 
 nav li {
 	list-style: none;
 }
 
-nav>ul>li.group::after {
-	content: "+";
+nav>ul>li.group>a::after {
+	content: " +";
 }
 
 nav>ul>li>ul {
-	display: none;
+	z-index: -1;
+	display: block;
+	position: absolute;
+	top: 4rem;
+	transform: translateY(-100%) translateX(-50%);
+	background: var(--gray2);
+	padding: 1em;
+	left: 50%;
+	width: 100%;
+	transition: transform 0.1s;
 }
 
 nav>ul>li:focus-within>ul, nav>ul>li:hover>ul{
-	display: block;
+	transform: translateX(-50%);
 }
 
 /********/
@@ -59,7 +102,7 @@ main section p {
 }
 
 main section::before {
-	background: #121212;
+	background: var(--gray0);
 	content: "";
 	display: block;
 	width: 100%;
@@ -68,11 +111,11 @@ main section::before {
 }
 
 main section:nth-child(odd) {
-	background: #000;
+	background: var(--gray1);
 }
 
 main section:nth-child(even)::before {
-	background: #000;
+	background: var(--gray1);
 }
 
 main footer {
@@ -102,6 +145,6 @@ body>footer p {
 }
 
 body>footer a {
-	color: #fff;
+	color: var(--text-em);
 	text-decoration: dotted underline;
 }
