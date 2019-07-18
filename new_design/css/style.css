@@ -57,6 +57,12 @@ nav>ul>li>a {
 	text-align: center;
 	line-height: 4rem;
 	background: var(--gray2);
+	border-color: #F00;
+	transition: 0.1s border;
+}
+
+nav>ul>li:hover>a, nav>ul>li:focus-within>a {
+	border-bottom: 0.2em solid #F00;
 }
 
 nav li {
@@ -74,10 +80,20 @@ nav>ul>li>ul {
 	top: 4rem;
 	transform: translateY(-100%) translateX(-50%);
 	background: var(--gray2);
-	padding: 1em;
+	padding: 0.7em 0;
 	left: 50%;
 	width: 100%;
 	transition: transform 0.1s;
+}
+
+nav>ul>li>ul>li>a {
+	display: block;
+	width: 100%;
+	padding: 0 1em 0 0.8em;
+	border-left: 0.2em solid rgba(255,0,0,0);
+}
+nav>ul>li>ul>li>a:hover {
+	border-left: 0.2em solid #F00;
 }
 
 nav>ul>li:focus-within>ul, nav>ul>li:hover>ul{
