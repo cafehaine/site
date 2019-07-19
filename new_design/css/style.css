@@ -5,9 +5,9 @@
 }
 
 body {
-	--gray0: #121212;
+	--gray0: #1A1A1A;
 	--gray1: #000000;
-	--gray2: #242424;
+	--gray2: #303030;
 	--text: #dfdfdf;
 	--text-em: #ffffff;
 	background: var(--gray0);
@@ -23,6 +23,7 @@ body {
 /**************/
 
 nav {
+	box-shadow: 0 0.2rem 1rem #000;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -74,6 +75,7 @@ nav>ul>li.group>a::after {
 }
 
 nav>ul>li>ul {
+	box-shadow: 0 0 0 #000;
 	z-index: -1;
 	display: block;
 	position: absolute;
@@ -92,11 +94,12 @@ nav>ul>li>ul>li>a {
 	padding: 0 1em 0 0.8em;
 	border-left: 0.2em solid rgba(255,0,0,0);
 }
-nav>ul>li>ul>li>a:hover {
+nav>ul>li>ul>li>a:hover, nav>ul>li>ul>li>a:focus {
 	border-left: 0.2em solid #F00;
 }
 
 nav>ul>li:focus-within>ul, nav>ul>li:hover>ul{
+	box-shadow: 0 0.2rem 1rem #000;
 	transform: translateX(-50%);
 }
 
