@@ -10,6 +10,8 @@ body {
 	--gray2: #303030;
 	--text: #dfdfdf;
 	--text-em: #ffffff;
+	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,1);
+	--shadow-high: 0 0.4em 1.4em rgba(0,0,0,0.7);
 	background: var(--gray0);
 	color: var(--text);
 	font-family: Cantarell, Verdana, Helvetica, Roboto, sans-serif;
@@ -23,7 +25,7 @@ body {
 /**************/
 
 nav {
-	box-shadow: 0 0.2rem 1rem #000;
+	box-shadow: var(--shadow-low);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -99,7 +101,7 @@ nav>ul>li>ul>li>a:hover, nav>ul>li>ul>li>a:focus {
 }
 
 nav>ul>li:focus-within>ul, nav>ul>li:hover>ul{
-	box-shadow: 0 0.2rem 1rem #000;
+	box-shadow: var(--shadow-high);
 	transform: translateX(-50%);
 }
 

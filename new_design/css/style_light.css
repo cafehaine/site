@@ -1,0 +1,10 @@
+body {
+	--gray0: #EEE;
+	--gray1: #FFF;
+	--gray2: #FFF;
+	--text: #333;
+	--text-em: #000;
+	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,0.5);
+	--shadow-high: 0 0.4em 1.4em rgba(0,0,0,0.4);
+	line-height: 1.4em;
+}
