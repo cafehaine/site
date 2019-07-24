@@ -7,14 +7,35 @@ local tmpl = require('tmpl')
 -- Clean previous data --
 -------------------------
 
+print("=> Cleaning previous build")
 os.execute("rm -r out")
 os.execute("mkdir out")
-os.execute("cp -r static/* out")
-os.execute("mkdir out/blog")
 
-----------
--- Main --
-----------
+print("=> Copying static files")
+os.execute("cp -r static/* out")
+
+-----------
+-- Utils --
+-----------
+
+local function load_template(name)
+	local file = io.open(name..".html")
+	local renderer = tmpl(file:read("*a"))
+	file:close()
+	return renderer
+end
+
+local function render_template(output, renderer, context)
+	local out = io.open(output, "w")
+	for s in renderer(context) do
+		out:write(s)
+	end
+	out:close()
+end
+
+-------------------
+-- Load articles --
+-------------------
 
 local article_meta_files = glob_glob("articles/*.lua", 0) or {}
 local articles = {}
@@ -28,17 +49,26 @@ end
 -- Rendering --
 ---------------
 
-local template_blog = io.open("template_blog.html")
-local blog_renderer = tmpl(template_blog:read("*a"))
-template_blog:close()
+print("=> Blog")
+os.execute("mkdir out/blog")
+
+print("  - Articles")
+local blog_renderer = load_template("template_blog")
 for i=1, #articles do
 	local ctx = {
 		article = articles[i]
 	}
-	print(articles[i].name)
-	local out = io.open("out/blog/"..articles[i].name..".html","w")
-	for s in blog_renderer(ctx) do
-		out:write(s)
-	end
-	out:close()
+	print("    - "..articles[i].name)
+        os.execute("mkdir out/blog/'"..articles[i].name.."'")
+	render_template("out/blog/"..articles[i].name.."/index.html", blog_renderer, ctx)
 end
+
+print("  - By date")
+print("  - By tags")
+print("    - Tag list")
+local tags_renderer = load_template("template_tags")
+local ctx = {tags={{url_name="linux", name="Linux"}, {url_name="csharp", name="C#"}}}
+os.execute("mkdir out/blog/tags")
+render_template("out/blog/tags/index.html", tags_renderer, ctx)
+print("    - Tag pages")
+

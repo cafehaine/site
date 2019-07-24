@@ -159,7 +159,7 @@ end
 function art:render_tag_list()
 	local output = {}
 	for _,t in ipairs(self.tags) do
-		output[#output+1] = ('<a href="tags/%s.html">%s</a>'):format(t, tags[t])
+		output[#output+1] = ('<a href="/blog/tags/%s/page_0.html">%s</a>'):format(t, tags[t])
 	end
 	return table.concat(output, " ")
 end

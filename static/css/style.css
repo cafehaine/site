@@ -131,11 +131,14 @@ main section {
 	padding-bottom: 2em;
 }
 
+main h3, main h4, main h5, main h6, main p {
+	padding-top: 1.7em;
+}
+
 main p {
 	width: 70ch;
 	max-width: 90%;
 	margin: auto;
-	padding-top: 2em;
 }
 
 main>section p {
