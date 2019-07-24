@@ -23,9 +23,27 @@ local months = {
 local art = {}
 art.__index = art
 art._all_articles = {}
+art._all_tags = {}
+
+local function comp_name(t1, t2)
+	return t1.name < t2.name
+end
+
+function art.get_tag_list()
+	local output = {}
+	for tag,_ in pairs(art._all_tags) do
+		output[#output+1] = {url_name=tag, name=tags[tag]}
+	end
+	table.sort(output, comp_name)
+	return output
+end
 
 function art.new(name)
 	local self = setmetatable(dofile(name..".lua"), art)
+
+	for _,tag in ipairs(self.tags) do
+		art._all_tags[tag] = true
+	end
 
 	self.name = name:match("^.*/(.*)$")
 	self.content = marccup.to_tree(io.open(name..".cup"))

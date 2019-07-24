@@ -67,7 +67,7 @@ print("  - By date")
 print("  - By tags")
 print("    - Tag list")
 local tags_renderer = load_template("template_tags")
-local ctx = {tags={{url_name="linux", name="Linux"}, {url_name="csharp", name="C#"}}}
+local ctx = {tags=art.get_tag_list()}
 os.execute("mkdir out/blog/tags")
 render_template("out/blog/tags/index.html", tags_renderer, ctx)
 print("    - Tag pages")

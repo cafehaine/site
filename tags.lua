@@ -1,7 +1,7 @@
 local t = {
 	csharp= "C#",
 	modernui= "Modern UI",
-	TEST= "Test",
+	TEST= "TEST",
 }
 
 local meta = {}
