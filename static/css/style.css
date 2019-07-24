@@ -20,6 +20,11 @@ body {
 	padding-top: 4rem;
 }
 
+a {
+	color: var(--text-em);
+	text-decoration: dotted underline;
+}
+
 /**************/
 /* Navigation */
 /**************/
@@ -179,9 +184,4 @@ body>footer {
 }
 body>footer p {
 	line-height: 2em;
-}
-
-body>footer a {
-	color: var(--text-em);
-	text-decoration: dotted underline;
 }

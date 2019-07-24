@@ -132,9 +132,17 @@ end
 
 function art:render_body()
 	local output = {}
+	local first_title = true
 	for _,node in ipairs(self.content) do
 		if node.type == "title" then
-			output[#output+1] = ("<h%d>%s</h%d>"):format(node.level, escape(node.body), node.level)
+			if node.level == 1 and not first_title then
+				output[#output+1] = "</section>"
+			end
+			if first_title then
+				first_title = false
+			end
+			output[#output+1] = "<section>"
+			output[#output+1] = ("<h%d>%s</h%d>"):format(node.level + 1, escape(node.body), node.level)
 		elseif node.type == "text" then
 		        output[#output+1] = "<p>"
 			output[#output+1] = render_text(node.data)
@@ -143,15 +151,16 @@ function art:render_body()
 			output[#output+1] = render_code(node)
 		end
 	end
+	output[#output+1] = "</section>"
 	return table.concat(output)
 end
 
 function art:render_tag_list()
 	local output = {}
 	for _,t in ipairs(self.tags) do
-		output[#output+1] = ('<li><a href="tags/%s.html">%s</a></li>'):format(t, tags[t])
+		output[#output+1] = ('<a href="tags/%s.html">%s</a>'):format(t, tags[t])
 	end
-	return table.concat(output)
+	return table.concat(output, " ")
 end
 
 return art
