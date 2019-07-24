@@ -25,8 +25,27 @@ art.__index = art
 art._all_articles = {}
 art._all_tags = {}
 
+-- Some functions for table sorting
+
 local function comp_name(t1, t2)
 	return t1.name < t2.name
+end
+
+local function comp_first_index(t1, t2)
+	return t1[1] < t2[1]
+end
+
+local function desc_date(t1, t2)
+	if t1.year_num == t2.year_num then
+		if t1.month_num == t2.month_num then
+			if t1.day_num == t2.day_num then
+				return t1.title < t2.title
+			end
+			return t1.day_num > t2.day_num
+		end
+		return t1.month_num > t2.month_num
+	end
+	return t1.year_num > t2.year_num
 end
 
 function art.get_tag_list()
@@ -45,7 +64,7 @@ function art.articles_with_tag(tag)
 			output[#output+1] = article
 		end
 	end
-	--TODO sort articles by date
+	table.sort(output, desc_date)
 	return output
 end
 
@@ -61,8 +80,11 @@ function art.new(name)
 
 	local d,m,y = self.date:match("(.*)/(.*)/(.*)")
 	self.day = d
+	self.day_num = tonumber(d)
 	self.month = months[tonumber(m)]
+	self.month_num = tonumber(m)
 	self.year = y
+	self.year_num = tonumber(y)
 
 	self.excerpt = up_to_100_chars(marccup.only_text(self.content))
 
@@ -96,10 +118,6 @@ function art:tags_in_common(article)
 		end
 	end
 	return common
-end
-
-local function comp_first_index(t1, t2)
-	return t1[1] < t2[1]
 end
 
 function art:similar_articles()

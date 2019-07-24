@@ -34,6 +34,7 @@
 			{% for _,article in ipairs(articles) do %}
 			<section>
 				<h2>{{ article.title }}</h2>
+				<p>Posted: {{ article.date }}</p>
 				<p>{{ article.excerpt }}</p>
 				<a href="/blog/{{article.name}}/">Read the article</a>
 			</section>
