@@ -154,7 +154,7 @@ main footer {
 /**********/
 
 body>footer::before {
-	background: linear-gradient(to right, #900, #F00, #900);
+	background: #F00;
 	content: "";
 	display: block;
 	width: 100%;

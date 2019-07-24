@@ -1,10 +1,10 @@
 body {
-	--gray0: #F4F4F4;
+	--gray0: #F9F9F9;
 	--gray1: #FFF;
 	--gray2: #FFF;
 	--text: #333;
 	--text-em: #000;
-	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,0.5);
-	--shadow-high: 0 0.4em 1.4em rgba(0,0,0,0.4);
+	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,0.3);
+	--shadow-high: 0 0.4em 1.4em rgba(0,0,0,0.2);
 	line-height: 1.4em;
 }
