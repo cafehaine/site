@@ -5,7 +5,7 @@
 }
 
 body {
-	--gray0: #1A1A1A;
+	--gray0: #1C1C1C;
 	--gray1: #000000;
 	--gray2: #303030;
 	--text: #dfdfdf;
@@ -109,21 +109,32 @@ nav>ul>li:focus-within>ul, nav>ul>li:hover>ul{
 /* Main */
 /********/
 
+main>* {
+	padding-bottom: 2em;
+	text-align: center;
+}
+
+main>*:nth-child(odd) {
+	background: var(--gray1)
+}
+
+main header {
+	padding-top: 4rem;
+}
+
 main section {
 	padding-bottom: 2em;
 }
 
-main section * {
-	margin: auto;
-	text-align: center;
-}
-
-main section p {
+main p {
 	width: 70ch;
 	max-width: 90%;
 	margin: auto;
-	text-align: justify;
 	padding-top: 2em;
+}
+
+main>section p {
+	text-align: justify;
 }
 
 main section::before, main footer::before {
@@ -145,8 +156,8 @@ main section:nth-child(even)::before, main footer:nth-child(even)::before {
 	clip-path: polygon(100% 0, 100% 100%, 0 0);
 }
 
-main footer {
-	text-align: center;
+main>footer p {
+	padding-top: 0;
 }
 
 /**********/
@@ -159,12 +170,12 @@ body>footer::before {
 	display: block;
 	width: 100%;
 	height: 0.1em;
-	margin: 2em 0;
+	margin-bottom: 2rem;
 }
 
 body>footer {
 	text-align: center;
-	margin-bottom: 3em;
+	margin-bottom: 2rem;
 }
 body>footer p {
 	line-height: 2em;
