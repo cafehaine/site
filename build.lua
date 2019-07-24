@@ -19,7 +19,7 @@ os.execute("cp -r static/* out")
 -----------
 
 local function load_template(name)
-	local file = io.open(name..".html")
+	local file = io.open("templates/"..name..".html")
 	local renderer = tmpl(file:read("*a"))
 	file:close()
 	return renderer
@@ -31,6 +31,15 @@ local function render_template(output, renderer, context)
 		out:write(s)
 	end
 	out:close()
+end
+
+local function generate_pages(path, articles)
+	local out = io.open("out/"..path.."/page_0.html", "w")
+	for _,article in ipairs(articles) do
+		out:write(article.title.."\n")
+	end
+	out:close()
+	--TODO handle multiple pages
 end
 
 -------------------
@@ -53,7 +62,7 @@ print("=> Blog")
 os.execute("mkdir out/blog")
 
 print("  - Articles")
-local blog_renderer = load_template("template_blog")
+local blog_renderer = load_template("blog")
 for i=1, #articles do
 	local ctx = {
 		article = articles[i]
@@ -64,11 +73,19 @@ for i=1, #articles do
 end
 
 print("  - By date")
+
+
 print("  - By tags")
 print("    - Tag list")
-local tags_renderer = load_template("template_tags")
+local tags_renderer = load_template("tags")
 local ctx = {tags=art.get_tag_list()}
 os.execute("mkdir out/blog/tags")
 render_template("out/blog/tags/index.html", tags_renderer, ctx)
 print("    - Tag pages")
+for _,tag in ipairs(art.get_tag_list()) do
+	os.execute("mkdir out/blog/tags/"..tag.url_name)
+	local articles = art.articles_with_tag(tag.url_name)
+	generate_pages("blog/tags/"..tag.url_name, articles)
+end
 
+print("  - RSS")

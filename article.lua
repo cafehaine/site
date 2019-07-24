@@ -38,6 +38,17 @@ function art.get_tag_list()
 	return output
 end
 
+function art.articles_with_tag(tag)
+	local output = {}
+	for _,article in ipairs(art._all_articles) do
+		if article:has_tag(tag) then
+			output[#output+1] = article
+		end
+	end
+	--TODO sort articles by date
+	return output
+end
+
 function art.new(name)
 	local self = setmetatable(dofile(name..".lua"), art)
 
@@ -63,14 +74,25 @@ function art.new(name)
 	return self
 end
 
+function art:has_tag(tag)
+	-- handle the "build.lua tags" and the "real" tags
+	if type(tag) == "table" then
+		tag = tag.url_name
+	end
+	for _,t in ipairs(self.tags) do
+		if t == tag then
+			return true
+		end
+	end
+	return false
+end
+
 function art:tags_in_common(article)
 	local common = 0
 	for _,t in ipairs(self.tags) do
-		for _,t2 in ipairs(article.tags) do
-			if t2 == t then
-				common = common + 1
-				break
-			end
+		if article.has_tag(t) then
+			common = common + 1
+			break
 		end
 	end
 	return common
