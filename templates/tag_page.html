@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>{{tag_name}} | CaféHaine</title>
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li class="logo"><a href="/">CaféHaine</a></li>
+				<li class="group"><a href="/blog/">Blog</a>
+					<ul>
+						<li><a href="/blog/all/">By date</a></li>
+						<li><a href="/blog/tags/">By tags</a></li>
+					</ul>
+				</li>
+				<li class="group"><a href="/projects/">Projects</a>
+					<ul>
+						<li><a href="#">Latests</a></li>
+						<li><a href="#">By platform</a></li>
+						<li><a href="#">By subject</a></li>
+						<li><a href="#">By language</a></li>
+						<li><a href="#">By date</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<main>
+			<header>
+				<h1>{{tag_name}}</h1>
+			</header>
+			{% for _,article in ipairs(articles) do %}
+			<section>
+				<h2>{{ article.title }}</h2>
+				<p>{{ article.excerpt }}</p>
+				<a href="/blog/{{article.name}}/">Read the article</a>
+			</section>
+			{% end %}
+		</main>
+		<footer>
+			<p><a href="https://twitter.com/cafehaine">Twitter</a> − <a href="https://github.com/cafehaine">Github</a> − <a href="mailto:cafehaine@gmail.com">Email</a></p>
+			<p>No javascript, no cookies, no nothing.</p>
+			<p>Switch to <a href="https://www.mozilla.org/firefox/new/">Firefox</a>.</p>
+			<p>Copyright © {* os.date("*t").year *} CaféHaine, all rights reserved</p>
+		</footer>
+	</body>
+</html>
+
