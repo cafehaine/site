@@ -25,6 +25,18 @@ art.__index = art
 art._all_articles = {}
 art._all_tags = {}
 
+-----------
+-- Utils --
+-----------
+
+local function shallow_copy_table(t)
+	local output = {}
+	for k,v in pairs(t) do
+		output[k] = v
+	end
+	return output
+end
+
 -- Some functions for table sorting
 
 local function comp_name(t1, t2)
@@ -66,6 +78,12 @@ function art.articles_with_tag(tag)
 	end
 	table.sort(output, desc_date)
 	return output
+end
+
+function art.all_articles()
+	local articles = shallow_copy_table(art._all_articles)
+	table.sort(articles, desc_date)
+	return articles
 end
 
 function art.new(name)

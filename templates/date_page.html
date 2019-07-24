@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Blog tags | CaféHaine</title>
+		<title>Articles by date | CaféHaine</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
 	</head>
@@ -29,15 +29,16 @@
 		</nav>
 		<main>
 			<header>
-				<h1>Blog tags</h1>
+				<h1>Articles by date</h1>
 			</header>
+			{% for _,article in ipairs(articles) do %}
 			<section>
-				<ul>
-					{% for _,tag in ipairs(tags) do %}
-					<li><a href="/blog/tags/{{tag.url_name}}/page_0.html">{{tag.name}}</a></li>
-					{% end %}
-				</ul>
+				<h2>{{ article.title }}</h2>
+				<p>Posted: {{ article.date }}</p>
+				<p>{{ article.excerpt }}</p>
+				<a href="/blog/{{article.name}}/">Read the article</a>
 			</section>
+			{% end %}
 		</main>
 		<footer>
 			<p><a href="https://twitter.com/cafehaine">Twitter</a> − <a href="https://github.com/cafehaine">Github</a> − <a href="mailto:cafehaine@gmail.com">Email</a></p>
