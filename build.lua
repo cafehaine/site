@@ -36,8 +36,8 @@ end
 local function generate_date_pages()
 	os.execute("mkdir out/blog/all")
 	local articles = art.all_articles()
-	local renderer = load_template("date_page")
-	local ctx = {articles=articles}
+	local renderer = load_template("page")
+	local ctx = {articles=articles, title="Articles by date"}
 	render_template("out/blog/all/page_0.html", renderer, ctx)
 	--TODO handle multiple pages
 end
@@ -45,8 +45,8 @@ end
 local function generate_tag_pages(tag)
 	os.execute("mkdir out/blog/tags/"..tag.url_name)
 	local articles = art.articles_with_tag(tag.url_name)
-	local renderer = load_template("tag_page")
-	local ctx = {articles=articles, tag_name=tag.name}
+	local renderer = load_template("page")
+	local ctx = {articles=articles, title="Articles matching "..tag.name}
 	render_template("out/blog/tags/"..tag.url_name.."/page_0.html", renderer, ctx)
 	--TODO handle multiple pages
 end

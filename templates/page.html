@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Articles by date | CaféHaine</title>
+		<title>{{ title }} | CaféHaine</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
 	</head>
@@ -29,7 +29,7 @@
 		</nav>
 		<main>
 			<header>
-				<h1>Articles by date</h1>
+				<h1>{{ title }}</h1>
 			</header>
 			{% for _,article in ipairs(articles) do %}
 			<section>

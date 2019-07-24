@@ -2,6 +2,7 @@ body {
 	--gray0: #F9F9F9;
 	--gray1: #FFF;
 	--gray2: #FFF;
+	--code-background: #DDD;
 	--text: #333;
 	--text-em: #000;
 	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,0.3);

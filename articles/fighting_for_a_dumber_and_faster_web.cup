@@ -1,3 +1,4 @@
+# Introduction
 Recently, I've re-written my website to be dumber, faster, and more secure. How
 did I do it?. It's simple, no more PHP or any server-side code, and no more
 javascript. I've gone back to the pre CGI 1993 era.

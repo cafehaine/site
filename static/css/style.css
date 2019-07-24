@@ -8,6 +8,7 @@ body {
 	--gray0: #1C1C1C;
 	--gray1: #000000;
 	--gray2: #303030;
+	--code-background: #404040;
 	--text: #dfdfdf;
 	--text-em: #ffffff;
 	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,1);
@@ -178,6 +179,15 @@ main section:nth-child(even)::before, main footer:nth-child(even)::before {
 main>footer p {
 	padding-top: 0;
 }
+
+main code {
+	padding: 0.1em 0.4em;
+	border-radius: 0.2em;
+	background: var(--code-background);
+	font-size: 0.9em;
+	white-space: nowrap;
+}
+
 
 /**********/
 /* Footer */

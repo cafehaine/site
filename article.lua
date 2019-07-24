@@ -176,7 +176,7 @@ local function render_text(text)
 		elseif node.type == "link" then
 			output[#output+1] = ('<a href="%s">%s</a>'):format(node.url, escape(node.description))
 		elseif node.type == "inline_code" then
-			output[#output+1] = ("<pre class='inline-code'>%s</pre>"):format(escape(node.body))
+			output[#output+1] = ("<code class='inline-code'>%s</code>"):format(escape(node.body))
 		else
 			pp(node, true)
 		end
