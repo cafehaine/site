@@ -69,6 +69,17 @@ nav>ul>li>a {
 	transition: 0.1s border;
 }
 
+nav>ul>li:last-of-type::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform: translateX(100%);
+	width: 2em;
+	height: 100%;
+	background: var(--gray2);
+}
+
 nav>ul>li:hover>a, nav>ul>li:focus-within>a {
 	border-bottom: 0.2em solid #F00;
 }
