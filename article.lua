@@ -135,13 +135,14 @@ function art:render_body()
 	local first_title = true
 	for _,node in ipairs(self.content) do
 		if node.type == "title" then
-			if node.level == 1 and not first_title then
-				output[#output+1] = "</section>"
+			if node.level == 1 then
+				if not first_title then
+					output[#output+1] = "</section>"
+				else
+					first_title = false
+				end
+				output[#output+1] = "<section>"
 			end
-			if first_title then
-				first_title = false
-			end
-			output[#output+1] = "<section>"
 			output[#output+1] = ("<h%d>%s</h%d>"):format(node.level + 1, escape(node.body), node.level)
 		elseif node.type == "text" then
 		        output[#output+1] = "<p>"
