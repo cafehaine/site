@@ -180,6 +180,15 @@ main>footer p {
 	padding-top: 0;
 }
 
+main>footer hr {
+	width: 10ch;
+	max-width: 75%;
+	background: #F00;
+	height: 0.1rem;
+	border: none;
+	margin: 1rem auto;
+}
+
 main code {
 	padding: 0.1em 0.4em;
 	border-radius: 0.2em;
