@@ -25,8 +25,11 @@ local function load_template(name)
 	return renderer
 end
 
+local __nav_template = load_template("nav")
+
 local function render_template(output, renderer, context)
 	local out = io.open(output, "w")
+	context.nav = __nav_template
 	for s in renderer(context) do
 		out:write(s)
 	end
@@ -66,6 +69,10 @@ end
 ---------------
 -- Rendering --
 ---------------
+
+print("=> Index")
+local index_renderer = load_template("index")
+render_template("out/index.html", index_renderer, {})
 
 print("=> Blog")
 os.execute("mkdir out/blog")

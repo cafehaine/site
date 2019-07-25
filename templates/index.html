@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>{{ title }} | CaféHaine</title>
+		<title>CaféHaine</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
 	</head>
@@ -10,16 +10,13 @@
 		{[nav]}
 		<main>
 			<header>
-				<h1>{{ title }}</h1>
+				<h1>CaféHaine</h1>
 			</header>
-			{% for _,article in ipairs(articles) do %}
 			<section>
-				<h2>{{ article.title }}</h2>
-				<p>Posted: {{ article.date }}</p>
-				<p>{{ article.excerpt }}</p>
-				<a href="/blog/{{article.name}}/">Read the article</a>
+				<h2>Welcome!</h2>
+				<p>On this website you'll find some blog articles, and some of my open source projects.</p>
+				<p>That's pretty much it though, don't expect much.</p>
 			</section>
-			{% end %}
 		</main>
 		<footer>
 			<p><a href="https://twitter.com/cafehaine">Twitter</a> − <a href="https://github.com/cafehaine">Github</a> − <a href="mailto:cafehaine@gmail.com">Email</a></p>
