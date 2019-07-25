@@ -10,13 +10,19 @@
 		{[nav]}
 		<main>
 			<header>
-				<h1>CaféHaine</h1>
+				<h1>Latest articles</h1>
 			</header>
+			{% for i=1,3 do art = latest_articles[i] %}
 			<section>
-				<h2>Welcome!</h2>
-				<p>On this website you'll find some blog articles, and some of my open source projects.</p>
-				<p>That's pretty much it though, don't expect much.</p>
+				<h2>{{ art.title }}</h2>
+				<p>Posted: {{ art.date }}</p>
+				<p>{{ art.excerpt }}</p>
+				<a href="/blog/{{art.name}}/">Read the article</a>
 			</section>
+			{% end %}
+			<footer>
+				<a href="/blog/all/page_0.html">All the articles</a>
+			</footer>
 		</main>
 		<footer>
 			<p><a href="https://twitter.com/cafehaine">Twitter</a> − <a href="https://github.com/cafehaine">Github</a> − <a href="mailto:cafehaine@gmail.com">Email</a></p>

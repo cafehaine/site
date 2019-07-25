@@ -72,7 +72,8 @@ end
 
 print("=> Index")
 local index_renderer = load_template("index")
-render_template("out/index.html", index_renderer, {})
+latest_articles = art.all_articles()
+render_template("out/index.html", index_renderer, {latest_articles})
 
 print("=> Blog")
 os.execute("mkdir out/blog")
