@@ -219,7 +219,7 @@ function art:render_body()
 				end
 				output[#output+1] = "<section>"
 			end
-			output[#output+1] = ("<h%d>%s</h%d>"):format(node.level + 1, escape(node.body), node.level)
+			output[#output+1] = ("<h%d>%s</h%d>"):format(node.level + 1, escape(node.body), node.level + 1)
 		elseif node.type == "text" then
 		        output[#output+1] = "<p>"
 			output[#output+1] = render_text(node.data)
