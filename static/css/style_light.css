@@ -9,3 +9,21 @@ body {
 	--shadow-high: 0 0.4em 1.4em rgba(0,0,0,0.2);
 	line-height: 1.4em;
 }
+
+/* syntax coloring */
+
+span.c1, span.cm { /* Comments */
+	color: #6A6;
+}
+
+span.s, span.s1, span.s2 { /* Strings */
+	color: #985;
+}
+
+span.o, span.ow { /* Operators */
+	color: #B0B;
+}
+
+span.kr, span.kc, span.kd { /* Keywords */
+	color: #22B;
+}

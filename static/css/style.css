@@ -219,19 +219,19 @@ main .code-block .highlight {
 /* syntax coloring */
 
 span.c1, span.cm { /* Comments */
-	color: #6A6;
+	color: #060;
 }
 
 span.s, span.s1, span.s2 { /* Strings */
-	color: #985;
+	color: #B95;
 }
 
 span.o, span.ow { /* Operators */
-	color: #B0B;
+	color: #D0D;
 }
 
 span.kr, span.kc, span.kd { /* Keywords */
-	color: #22B;
+	color: #77F;
 }
 
 /**********/
