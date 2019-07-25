@@ -130,7 +130,7 @@ end
 function art:tags_in_common(article)
 	local common = 0
 	for _,t in ipairs(self.tags) do
-		if article.has_tag(t) then
+		if article:has_tag(t) then
 			common = common + 1
 			break
 		end
@@ -139,16 +139,20 @@ function art:tags_in_common(article)
 end
 
 function art:similar_articles()
-	local output = {}
+	local similar = {}
 	for _,article in ipairs(art._all_articles) do
 		if article ~= self then
 			local common = self:tags_in_common(article)
 			if common > 0 then
-				output[#output+1] = {common, article}
+				similar[#similar+1] = {common, article}
 			end
 		end
 	end
-	table.sort(output, comp_first_index)
+	table.sort(similar, comp_first_index)
+	local output = {}
+	for i,v in ipairs(similar) do
+		output[i] = v[2]
+	end
 	return output
 end
 

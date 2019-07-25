@@ -35,6 +35,17 @@
 			{* article.body *}
 			<footer>
 				<p>Tags: {* article.tag_list *}</p>
+				<hr>
+				{% if #similar_arts > 0 then %}
+				<p>Similar articles:</p>
+				<ul>
+					{% for i=1,math.min(#similar_arts, 3) do %}
+					<li><a href="/blog/{{similar_arts[i].name}}/">{{ similar_arts[i].title }}</a></li>
+					{% end %}
+				</ul>
+				{% else %}
+				<p>No similar articles :(</p>
+				{% end %}
 			</footer>
 		</main>
 		<footer>

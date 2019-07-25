@@ -74,7 +74,8 @@ print("  - Articles")
 local blog_renderer = load_template("blog")
 for i=1, #articles do
 	local ctx = {
-		article = articles[i]
+		article = articles[i],
+		similar_arts = articles[i]:similar_articles()
 	}
 	print("    - "..articles[i].name)
         os.execute("mkdir out/blog/'"..articles[i].name.."'")
