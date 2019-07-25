@@ -216,6 +216,24 @@ main .code-block .highlight {
 	text-align: left;
 }
 
+/* syntax coloring */
+
+span.c1, span.cm { /* Comments */
+	color: #6A6;
+}
+
+span.s, span.s1, span.s2 { /* Strings */
+	color: #985;
+}
+
+span.o, span.ow { /* Operators */
+	color: #B0B;
+}
+
+span.kr, span.kc, span.kd { /* Keywords */
+	color: #22B;
+}
+
 /**********/
 /* Footer */
 /**********/
