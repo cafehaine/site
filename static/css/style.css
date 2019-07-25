@@ -143,11 +143,11 @@ main section {
 	padding-bottom: 2em;
 }
 
-main h3, main h4, main h5, main h6, main p {
+main h3, main h4, main h5, main h6, main p, main .code-block {
 	padding-top: 1.7em;
 }
 
-main p {
+main p, main .code-block {
 	width: 70ch;
 	max-width: 90%;
 	margin: auto;
@@ -197,6 +197,24 @@ main code {
 	white-space: nowrap;
 }
 
+/* code blocks */
+
+main .code-block {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	grid-column-gap: 0.6rem;
+	width: max-content;
+}
+
+main .code-block .lines {
+	display: flex;
+	flex-direction: column;
+}
+
+main .code-block .highlight {
+	overflow-x: auto;
+	text-align: left;
+}
 
 /**********/
 /* Footer */
