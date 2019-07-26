@@ -13,12 +13,17 @@ device, like a 5 years old phone.
 
 This is why this website has 0 javascript. (yup, none, you can check.)
 
+This website is made using only HTML5 and CSS3. This means that some old browser
+that you shouldn't be using for security reasons won't display it correctry, but
+do we really care about those?
+
 ## The server side
 
 Caching, databases, web servers, reverse proxies, containers, node.js packages…
 The stack that once was LAMP has become huge, complex, and hard to secure. This
-setup might feel simpler for users of high level languages, but abstraction of
-all of that infrastructure means most users don't know how their server run.
+setup might feel simpler for users of high level languages that like running
+some docker images from random users, but abstraction of all of that
+infrastructure means most users don't know how and what their server run.
 
 This is why this website is static, requiring only Linux, and Nginx. Everything
 is computed only once, when I re-generate the website after adding an article.
@@ -30,6 +35,9 @@ thousands of served pages. When you run that computation on the client, you've
 gone from one computation to thousands. A lot more energy is wasted, and your
 page feels slower to the user, since the browser had to compute stuff before
 displaying the page.
+
+But once again, maybe you don't even need server-side code. More code means more
+potential security risks, but also worse performances.
 
 # Yeah but how can I do X without javascript?
 
@@ -51,6 +59,15 @@ Browsing the mdn website will allow you to discover a whole bunch of cool new
 features, like css grids, and video subtitle tracks, that work without any
 javascript.
 
+Fun fact, depending on your OS, if you change the theme from light to dark, this
+website will also adapt! CSS3 is pretty cool.
+
 # In conclusion
 
-lol
+I really hope that more people will think twice before adding huge frameworks
+and assets to their websites. Current HTML5 and CSS3 specs allows us to have
+quite complex websites, and javascript isn't really needed anymore.
+
+If you still think that using javascript to prevent loading full pages is a good
+idea, check out this [blog article by Carter Sande](https://carter.sande.duodecima.technology/javascript-page-navigation/)
+about this subject.
