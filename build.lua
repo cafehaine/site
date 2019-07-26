@@ -26,10 +26,12 @@ local function load_template(name)
 end
 
 local __nav_template = load_template("nav")
+local __footer_template = load_template("footer")
 
 local function render_template(output, renderer, context)
 	local out = io.open(output, "w")
 	context.nav = __nav_template
+	context.footer = __footer_template
 	for s in renderer(context) do
 		out:write(s)
 	end
