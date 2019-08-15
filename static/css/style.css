@@ -7,18 +7,19 @@
 body {
 	--gray0: #1C1C1C;
 	--gray1: #000000;
-	--gray2: #303030;
+	--sub-nav-back: #A00;
+	--sub-nav-fore: #FFF;
 	--code-background: #404040;
 	--text: #dfdfdf;
 	--text-em: #ffffff;
 	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,1);
 	--shadow-high: 0 0.4em 1.4em rgba(0,0,0,0.7);
+	--accent: #F00;
 	background: var(--gray0);
 	color: var(--text);
 	font-family: Cantarell, Verdana, Helvetica, Roboto, sans-serif;
 	font-size: 1.2rem;
 	line-height: 1.5em;
-	padding-top: 4rem;
 }
 
 a {
@@ -31,95 +32,64 @@ a {
 /**************/
 
 nav {
-	box-shadow: var(--shadow-low);
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 4rem;
-	background: var(--gray2);
-	z-index: 100;
-}
-
-nav a {
-	text-decoration: none;
+	background: var(--gray1);
 	color: var(--text-em);
 }
 
-nav>ul {
+nav ul {
 	display: flex;
-	width: 100%;
-	height: 100%;
 	justify-content: center;
-}
-
-nav>ul>li {
-	width: 10em;
-	height: 100%;
-	position: relative;
-}
-
-nav>ul>li>a {
-	display:block;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	line-height: 4rem;
-	background: var(--gray2);
-	border-color: #F00;
-	transition: 0.1s border;
-}
-
-nav>ul>li:last-of-type::after {
-	content: "";
-	position: absolute;
-	right: 0;
-	top: 0;
-	transform: translateX(100%);
-	width: 2em;
-	height: 100%;
-	background: var(--gray2);
-}
-
-nav>ul>li:hover>a, nav>ul>li:focus-within>a {
-	border-bottom: 0.2em solid #F00;
 }
 
 nav li {
 	list-style: none;
+	font-size: 1.2em;
+	position: relative;
 }
 
-nav>ul>li.group>a::after {
-	content: " +";
-}
-
-nav>ul>li>ul {
-	box-shadow: 0 0 0 #000;
-	z-index: -1;
+nav li.focused::before {
 	display: block;
+	content: "";
+	width: 1em;
+	height: 0.5em;
 	position: absolute;
-	top: 4rem;
-	transform: translateY(-100%) translateX(-50%);
-	background: var(--gray2);
-	padding: 0.7em 0;
-	left: 50%;
-	width: 100%;
-	transition: transform 0.1s;
+	bottom: 0;
+	left: calc(50% - 0.5em);
+	background: var(--sub-nav-back);
+	clip-path: polygon(0 100%, 50% 0, 100% 100%);
 }
 
-nav>ul>li>ul>li>a {
+/* links */
+
+nav li a {
+	text-decoration: none;
 	display: block;
-	width: 100%;
-	padding: 0 1em 0 0.8em;
-	border-left: 0.2em solid rgba(255,0,0,0);
-}
-nav>ul>li>ul>li>a:hover, nav>ul>li>ul>li>a:focus {
-	border-left: 0.2em solid #F00;
+	padding: 0.5em;
 }
 
-nav>ul>li:focus-within>ul, nav>ul>li:hover>ul{
-	box-shadow: var(--shadow-high);
-	transform: translateX(-50%);
+nav li a:hover::before {
+	position: absolute;
+	content: "";
+	height: 0.1em;
+	width: 100%;
+	background: var(--text);
+	left: 0;
+	bottom: 0.1em;
+}
+
+/* Sub-navigation */
+
+nav .subnav {
+	background: var(--sub-nav-back);
+	color: var(--sub-nav-fore);
+}
+
+nav .subnav li {
+	font-size: 1em;
+}
+
+nav .subnav li a {
+	padding: 0.2em 0.4em;
 }
 
 /********/
@@ -136,7 +106,7 @@ main>*:nth-child(odd) {
 }
 
 main header {
-	padding-top: 4rem;
+	padding-top: 2rem;
 }
 
 main section {
@@ -183,7 +153,7 @@ main>footer p {
 main>footer hr {
 	width: 10ch;
 	max-width: 75%;
-	background: #F00;
+	background: var(--accent);
 	height: 0.1rem;
 	border: none;
 	margin: 1rem auto;
@@ -239,7 +209,7 @@ span.kr, span.kc, span.kd { /* Keywords */
 /**********/
 
 body>footer::before {
-	background: #F00;
+	background: var(--accent);
 	content: "";
 	display: block;
 	width: 100%;

@@ -26,12 +26,13 @@ local function load_template(name)
 end
 
 local __nav_template = load_template("nav")
+local __nav_blog_template = load_template("nav_blog")
 local __footer_template = load_template("footer")
 
 local function render_template(output, renderer, context)
 	local out = io.open(output, "w")
-	context.nav = __nav_template
-	context.footer = __footer_template
+	context.nav = context.nav or __nav_template
+	context.footer = context.footer or __footer_template
 	for s in renderer(context) do
 		out:write(s)
 	end
@@ -42,7 +43,7 @@ local function generate_date_pages()
 	os.execute("mkdir out/blog/all")
 	local articles = art.all_articles()
 	local renderer = load_template("page")
-	local ctx = {articles=articles, title="Articles by date"}
+	local ctx = {articles=articles, title="Articles by date", nav=__nav_blog_template}
 	render_template("out/blog/all/page_0.html", renderer, ctx)
 	--TODO handle multiple pages
 end
@@ -51,7 +52,7 @@ local function generate_tag_pages(tag)
 	os.execute("mkdir out/blog/tags/"..tag.url_name)
 	local articles = art.articles_with_tag(tag.url_name)
 	local renderer = load_template("page")
-	local ctx = {articles=articles, title="Articles matching "..tag.name}
+	local ctx = {articles=articles, title="Articles matching "..tag.name, nav=__nav_blog_template}
 	render_template("out/blog/tags/"..tag.url_name.."/page_0.html", renderer, ctx)
 	--TODO handle multiple pages
 end
@@ -85,7 +86,8 @@ local blog_renderer = load_template("blog")
 for i=1, #articles do
 	local ctx = {
 		article = articles[i],
-		similar_arts = articles[i]:similar_articles()
+		similar_arts = articles[i]:similar_articles(),
+		nav = __nav_blog_template
 	}
 	print("    - "..articles[i].name)
         os.execute("mkdir out/blog/'"..articles[i].name.."'")
@@ -98,7 +100,7 @@ generate_date_pages()
 print("  - By tags")
 print("    - Tag list")
 local tags_renderer = load_template("tags")
-local ctx = {tags=art.get_tag_list()}
+local ctx = {tags=art.get_tag_list(), nav=__nav_blog_template}
 os.execute("mkdir out/blog/tags")
 render_template("out/blog/tags/index.html", tags_renderer, ctx)
 print("    - Tag pages")
