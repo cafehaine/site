@@ -12,8 +12,6 @@ body {
 	--code-background: #404040;
 	--text: #dfdfdf;
 	--text-em: #ffffff;
-	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,1);
-	--shadow-high: 0 0.4em 1.4em rgba(0,0,0,0.7);
 	--accent: #F00;
 	background: var(--gray0);
 	color: var(--text);
