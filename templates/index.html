@@ -15,7 +15,7 @@
 				<h1>CaféHaine</h1>
 				<h2>Latest articles</h2>
 			</header>
-			{% for i=1,3 do art = latest_articles[i] %}
+			{% for i=1,math.min(3,#latest_articles) do art = latest_articles[i] %}
 			<section>
 				<h2>{{ art.title }}</h2>
 				<p>Posted: {{ art.date }}</p>

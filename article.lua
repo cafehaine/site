@@ -89,6 +89,8 @@ end
 function art.new(name)
 	local self = setmetatable(dofile(name..".lua"), art)
 
+	if self.wip then return nil end
+
 	for _,tag in ipairs(self.tags) do
 		art._all_tags[tag] = true
 	end

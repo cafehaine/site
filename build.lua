@@ -64,9 +64,9 @@ end
 local article_meta_files = glob_glob("articles/*.lua", 0) or {}
 local articles = {}
 
-for i,v in ipairs(article_meta_files) do
+for _,v in ipairs(article_meta_files) do
 	local name = v:match("^(.*/.*)%.lua$")
-	articles[i] = art.new(name)
+	articles[#articles+1] = art.new(name)
 end
 
 ---------------
