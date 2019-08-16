@@ -7,7 +7,6 @@
 body {
 	--gray0: #1C1C1C;
 	--gray1: #000000;
-	--gray2: #2f2f2f;
 	--sub-nav-back: #A00;
 	--sub-nav-fore: #FFF;
 	--code-background: #404040;
@@ -39,6 +38,10 @@ a {
 	text-decoration: dotted underline;
 }
 
+a:hover, a:focus {
+	text-decoration: underline var(--accent);
+}
+
 .big-button {
 	display: block;
 	margin-left: auto;
@@ -47,6 +50,11 @@ a {
 	max-width: 90%;
 	padding: 0.4em 0.8em;
 	border-radius: 0.3em;
+	text-decoration: none;
+}
+
+.big-button:hover, .big-button:focus-within {
+	box-shadow: 0 0 0 0.1em var(--accent);
 	text-decoration: none;
 }
 
@@ -90,7 +98,11 @@ nav li a {
 	padding: 0.5em;
 }
 
-nav li a:hover::before {
+nav li a:hover, nav li a:focus {
+	text-decoration: none;
+}
+
+nav li a:hover::before, nav li a:focus::before {
 	position: absolute;
 	content: "";
 	height: 0.1em;
