@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>CaféHaine</title>
+		<title>Work in progress | CaféHaine</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
 		<link rel="shortcut icon" href="/favicon.png">
@@ -12,20 +12,12 @@
 		{[nav]}
 		<main>
 			<header>
-				<h1>CaféHaine</h1>
-				<h2>Latest articles</h2>
+				<h1>Projects</h1>
 			</header>
-			{% for i=1,3 do art = latest_articles[i] %}
 			<section>
-				<h2>{{ art.title }}</h2>
-				<p>Posted: {{ art.date }}</p>
-				<p>{{ art.excerpt }}</p>
-				<a class="big-button" href="/blog/{{art.name}}/">Read the article</a>
+				<h2>Work in progress</h2>
+				<p>This section of the website is still a work in progress. Sorry :(</p>
 			</section>
-			{% end %}
-			<footer>
-				<a class="big-button" href="/blog/all/page_0.html">All the articles</a>
-			</footer>
 		</main>
 		{[footer]}
 	</body>

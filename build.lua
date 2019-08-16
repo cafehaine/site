@@ -109,3 +109,9 @@ for _,tag in ipairs(art.get_tag_list()) do
 end
 
 print("  - RSS")
+
+print("=> Projects")
+
+os.execute("mkdir out/projects")
+local projects_renderer = load_template("wip_projects")
+render_template("out/projects/index.html", projects_renderer, {})
