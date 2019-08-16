@@ -7,6 +7,8 @@ body {
 	--text-em: #000;
 	--shadow-low: 0 0.2em 0.7em rgba(0,0,0,0.3);
 	--shadow-high: 0 0.4em 1.4em rgba(0,0,0,0.2);
+	--sub-nav-back: #F00;
+	--sub-nav-fore: #000;
 	line-height: 1.4em;
 }
 

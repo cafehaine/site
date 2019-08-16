@@ -72,7 +72,7 @@ nav li a:hover::before {
 	content: "";
 	height: 0.1em;
 	width: 100%;
-	background: var(--text);
+	background: var(--text-em);
 	left: 0;
 	bottom: 0.1em;
 }
