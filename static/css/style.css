@@ -56,6 +56,13 @@ a:hover, a:focus {
 	text-decoration: none;
 }
 
+.tags a {
+	background: #220000;
+	padding: 0.1em 0.3em;
+	border-radius: 0.2em;
+	text-decoration: none;
+}
+
 /**************/
 /* Navigation */
 /**************/
@@ -148,6 +155,14 @@ main section {
 
 main h3, main h4, main h5, main h6, main p, main .code-block {
 	padding-top: 1.7em;
+}
+
+main .tags a {
+	background: var(--gray1);
+}
+
+main section:nth-child(odd) .tags a, main footer:nth-child(odd) .tags a{
+	background: var(--gray0);
 }
 
 main .big-button {

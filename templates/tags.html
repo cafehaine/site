@@ -15,7 +15,7 @@
 				<h1>Blog tags</h1>
 			</header>
 			<section>
-				<ul>
+				<ul class="tags">
 					{% for _,tag in ipairs(tags) do %}
 					<li><a href="/blog/tags/{{tag.url_name}}/page_0.html">{{tag.name}}</a></li>
 					{% end %}
