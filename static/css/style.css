@@ -61,6 +61,7 @@ a:hover, a:focus {
 	padding: 0.1em 0.3em;
 	border-radius: 0.2em;
 	text-decoration: none;
+	white-space: nowrap;
 }
 
 /**************/
@@ -222,6 +223,9 @@ main code {
 	background: var(--code-background);
 	font-size: 0.9em;
 	white-space: nowrap;
+	display: inline-block;
+	max-width: 100%;
+	overflow: auto;
 }
 
 /* code blocks */
