@@ -1,3 +1,7 @@
+Title: The art of multi-threading
+Date: 2017-03-16 11:31
+Category: Programming
+
 # Introduction
 
 If you've ever wondered how to get more performance out of your programs,

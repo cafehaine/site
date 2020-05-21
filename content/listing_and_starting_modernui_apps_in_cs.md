@@ -1,3 +1,7 @@
+Title: Listing and Starting modernUI applications in C#
+Date: 2017-03-04 11:41
+Category: C#
+
 # Context (sort of)
 
 Recently I've been trying to improve my personnal project
