@@ -1,6 +1,7 @@
 """
 Generate my static site.
 """
+import datetime
 import glob
 from os import makedirs
 from shutil import rmtree
@@ -35,8 +36,9 @@ def main():
     """Generate the site from the articles."""
     env = Environment(
             loader=PackageLoader('generate', 'templates'),
-            autoescape=select_autoescape(['html', 'xml'])
+            autoescape=select_autoescape(['html', 'xml']),
     )
+    env.globals['year'] = datetime.date.today().year
     article_template = env.get_template("article.html")
 
     # Cleanup output directory

@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}title{% endblock %} | CaféHaine</title>
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
+		<link rel="shortcut icon" href="/favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		{% include 'nav.html' %}
+		<main>
+			{% block main %}{% endblock %}
+		</main>
+		{% include 'footer.html' %}
+	</body>
+</html>
