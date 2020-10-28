@@ -4,7 +4,7 @@ Generate my static site.
 import datetime
 import glob
 from os import makedirs
-from shutil import rmtree
+import shutil
 from typing import Collection, List
 
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -43,7 +43,7 @@ def main():
 
     # Cleanup output directory
     try:
-        rmtree("out")
+        shutil.rmtree("out")
     except FileNotFoundError:
         pass
 
@@ -81,6 +81,7 @@ def main():
         pass # TODO generate pagination for each tag
 
     # copy static assets
+    shutil.copytree("static/", "out/", dirs_exist_ok=True)
 
 
 if __name__ == "__main__":
