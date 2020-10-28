@@ -15,20 +15,20 @@
 				<h1>{{ article.title }}</h1>
 				<p>Posted {{ article.day }} {{ article.month }} {{ article.year }}</p>
 			</header>
-			{* article.body *}
+			{{ article.render()|safe }}
 			<footer>
 				<p class="tags">Tags: {* article.tag_list *}</p>
 				<hr>
-				{% if #similar_arts > 0 then %}
+				{% if similar_articles %}
 				<p>Similar articles:</p>
 				<ul>
-					{% for i=1,math.min(#similar_arts, 3) do %}
-					<li><a href="/blog/{{similar_arts[i].name}}/">{{ similar_arts[i].title }}</a></li>
-					{% end %}
+					{% for similar_article in similar_articles %}
+					<li><a href="/blog/{{similar_article.slug}}/">{{ similar_article.title }}</a></li>
+					{% endfor %}
 				</ul>
 				{% else %}
 				<p>No similar articles :(</p>
-				{% end %}
+				{% endif %}
 			</footer>
 		</main>
 		{[footer]}

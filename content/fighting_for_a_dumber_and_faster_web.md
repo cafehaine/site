@@ -1,3 +1,7 @@
+title: Fighting for a dumber and faster web
+tags: html,css,static,web
+date: 0001-01-01
+---
 # Introduction
 Recently, I've re-written my website to be dumber, faster, and more secure. How
 did I do it?. It's simple, no more PHP or any server-side code, and no more

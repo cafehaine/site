@@ -2,9 +2,14 @@
 Generate my static site.
 """
 import glob
+from os import makedirs
+from shutil import rmtree
 from typing import Collection, List
 
-from mymarkdown import MyMarkdown
+from jinja2 import Environment, PackageLoader, select_autoescape
+import markdown
+
+from article import Article
 
 ARTICLES_PER_PAGE = 10
 
@@ -27,19 +32,33 @@ def paginate_by_n(collection: Collection, n: int) -> List[List]:
 
 def main():
     """Generate the site from the articles."""
+    env = Environment(
+            loader=PackageLoader('generate', 'templates'),
+            autoescape=select_autoescape(['html', 'xml'])
+    )
+    article_template = env.get_template("article.html")
+
+    # Cleanup output directory
+    try:
+        rmtree("out")
+    except FileNotFoundError:
+        pass
+
     # Find articles and load them
-    articles: List[MyMarkdown] = []
+    articles: List[str] = []
 
     for path in glob.iglob("./content/*.md"):
         print(f"Loading article at path '{path}'.")
-        articles.append(MyMarkdown(path))
+        articles.append(Article(path))
 
     articles.sort(key=lambda art: art.date)
 
     # generate a page for each article
     for article in articles:
         print(f"Generating page for {article.title}.")
-        # TODO
+        makedirs(f"out/articles/{article.slug}/")
+        with open(f"out/articles/{article.slug}/index.html", 'w') as out:
+            out.write(article_template.render(article=article))
 
     # generate an index page
     print("Generating the index page.")
@@ -51,6 +70,13 @@ def main():
         # TODO
 
     # generate a tag based pagination
+    tags = set(tag for article in articles for tag in article.tags)
+    print(f"Generating tag page index.")
+    # TODO
+
+    for tag in tags:
+        pass # TODO generate pagination for each tag
+
     # copy static assets
 
 
