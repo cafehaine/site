@@ -10,6 +10,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 import markdown
 
 from article import Article
+from tag import ALL_TAGS
 
 ARTICLES_PER_PAGE = 10
 
@@ -45,11 +46,12 @@ def main():
         pass
 
     # Find articles and load them
-    articles: List[str] = []
+    articles: List[Article] = []
 
     for path in glob.iglob("./content/*.md"):
         print(f"Loading article at path '{path}'.")
-        articles.append(Article(path))
+        article = Article(path)
+        articles.append(article)
 
     articles.sort(key=lambda art: art.date)
 
@@ -70,11 +72,10 @@ def main():
         # TODO
 
     # generate a tag based pagination
-    tags = set(tag for article in articles for tag in article.tags)
     print(f"Generating tag page index.")
     # TODO
 
-    for tag in tags:
+    for tag in ALL_TAGS:
         pass # TODO generate pagination for each tag
 
     # copy static assets

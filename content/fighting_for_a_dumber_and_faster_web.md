@@ -54,7 +54,7 @@ Server-side code will most of the time be able to solve your problems.
 For other things, html5 might already allow you to do such a thing:
 
 You want to create a spoiler element that hides some text? Just use the
-<details> element.
+`<details>` element.
 
 Want to have a popup menu? it's a bit more complex, but with hidden checkboxes,
 you can achieve that.
