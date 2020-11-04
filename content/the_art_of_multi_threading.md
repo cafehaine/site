@@ -2,6 +2,7 @@ title: The art of multi-threading
 date: 2017-03-16
 tags: Programming
 ---
+<section markdown="1">
 # Introduction
 
 If you've ever wondered how to get more performance out of your programs,
@@ -28,6 +29,8 @@ Now that you understand a little bit more about multithreading, let's talk about
 what you should NOT do. (If you still have some problems understanding this,
 please go check wikipedia.)
 
+</section><section markdown="1">
+
 # What not to do
 
 As with any other kind of optimisation, you should consider a few things first.
@@ -46,6 +49,8 @@ threads, DO NOT OUTPUT YOUR RESULTS IN A SHARED VARIABLE. This will cause each
 thread to wait for all others to stop saving the result. Instead, just return
 multiple results that you can combine afterwards.
 
+</section><section markdown="1">
+
 # Some tips
 
 Think about how to divide your workload before starting to code: Think about how
@@ -62,3 +67,5 @@ are working, as some may have finished their part faster.
 
 Anyway, I hope this helped you in some way, and I hope you will have less
 troubles realising your next multithreaded application.
+
+<section markdown="1">

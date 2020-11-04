@@ -2,10 +2,14 @@ title: Fighting for a dumber and faster web
 tags: html,css,static,web
 date: 0001-01-01
 ---
+<section markdown="1">
+
 # Introduction
 Recently, I've re-written my website to be dumber, faster, and more secure. How
 did I do it?. It's simple, no more PHP or any server-side code, and no more
 javascript. I've gone back to the pre CGI 1993 era.
+
+</section><section markdown="1">
 
 # What's the problem with current websites?
 
@@ -32,6 +36,8 @@ infrastructure means most users don't know how and what their server run.
 This is why this website is static, requiring only Linux, and Nginx. Everything
 is computed only once, when I re-generate the website after adding an article.
 
+</section><section markdown="1">
+
 # What's wrong with computing stuff client-side?
 
 Computing something server-side means that you compute it once for potentially
@@ -42,6 +48,8 @@ displaying the page.
 
 But once again, maybe you don't even need server-side code. More code means more
 potential security risks, but also worse performances.
+
+</section><section markdown="1">
 
 # Yeah but how can I do X without javascript?
 
@@ -54,7 +62,7 @@ Server-side code will most of the time be able to solve your problems.
 For other things, html5 might already allow you to do such a thing:
 
 You want to create a spoiler element that hides some text? Just use the
-`<details>` element.
+`details` element.
 
 Want to have a popup menu? it's a bit more complex, but with hidden checkboxes,
 you can achieve that.
@@ -66,6 +74,8 @@ javascript.
 Fun fact, depending on your OS, if you change the theme from light to dark, this
 website will also adapt! CSS3 is pretty cool.
 
+</section><section markdown="1">
+
 # In conclusion
 
 I really hope that more people will think twice before adding huge frameworks
@@ -75,3 +85,5 @@ quite complex websites, and javascript isn't really needed anymore.
 If you still think that using javascript to prevent loading full pages is a good
 idea, check out this [blog article by Carter Sande](https://carter.sande.duodecima.technology/javascript-page-navigation/)
 about this subject.
+
+</section>

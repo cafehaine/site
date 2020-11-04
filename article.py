@@ -46,7 +46,7 @@ class Article:
 
     def render(self) -> str:
         """Render this article's markdown."""
-        return markdown.markdown(self.contents)
+        return markdown.markdown(self.contents, output_format="html5", extensions=['md_in_html'])
 
 
     def _parse_property(self, line: str):

@@ -2,6 +2,7 @@ title: Listing and Starting modernUI applications in C#
 date: 2017-03-04
 tags: C#
 ---
+<section markdown="1">
 # Context (sort of)
 
 Recently I've been trying to improve my personnal project
@@ -18,6 +19,8 @@ A few websites point to `shell:::{4234d49b-0245-4df3-B780-3893943456e1}`, and
 that is true, but you sadly cannot acess that from C#.
 
 The truth is: I don't know "where" to find them, but I know "how". This is how
+
+</section><section markdown="1">
 
 # How I did it
 ## Listing the applications
@@ -57,6 +60,8 @@ than this about the subject, since you can just check out my code
 [here](https://github.com/cafehaine/windmenu/blob/master/Server/UniversalApplicationHelper.cs)
 to see how I did it.
 
+</section><section markdown="1">
+
 # Conclusion
 
 There must be a better way. I don't know why Microsoft made it so hard to start
@@ -70,3 +75,5 @@ keys this is based on.
 
 Anyway, I hope I will be able to find a new way to do this, which I will post
 here.
+
+</section>
