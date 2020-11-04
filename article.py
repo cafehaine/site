@@ -49,6 +49,16 @@ class Article:
         return markdown.markdown(self.contents, output_format="html5", extensions=['md_in_html'])
 
 
+    def excerpt(self) -> str:
+        """Return the beginning of this article (without html)."""
+        return "TODO" # TODO
+
+
+    def url(self) -> str:
+        """Return the url for this article."""
+        return f"/articles/{self.slug}/"
+
+
     def _parse_property(self, line: str):
         """Parse a single property line."""
         key, value = line.split(sep=":", maxsplit=1)

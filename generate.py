@@ -34,12 +34,17 @@ def paginate_by_n(collection: Collection, n: int) -> List[List]:
 
 def main():
     """Generate the site from the articles."""
+    # Setup jinja
     env = Environment(
             loader=PackageLoader('generate', 'templates'),
             autoescape=select_autoescape(['html', 'xml']),
+            extensions=['jinja2.ext.debug'],
     )
     env.globals['year'] = datetime.date.today().year
+
+    # Load templates
     article_template = env.get_template("article.html")
+    index_template = env.get_template("index.html")
 
     # Cleanup output directory
     try:
@@ -66,7 +71,10 @@ def main():
 
     # generate an index page
     print("Generating the index page.")
-    # TODO
+    latest_articles = articles[::-1][:3]
+    print(latest_articles)
+    with open(f"out/index.html", 'w') as out:
+        out.write(index_template.render(latest_articles=latest_articles))
 
     # generate a chronological pagination
     for index, page_articles in enumerate(paginate_by_n(articles, ARTICLES_PER_PAGE)):

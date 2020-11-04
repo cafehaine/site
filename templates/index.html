@@ -1,32 +1,21 @@
-<!DOCTYPE HTML>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>CaféHaine</title>
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
-		<link rel="shortcut icon" href="/favicon.png">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	</head>
-	<body>
-		{[nav]}
-		<main>
-			<header>
-				<h1>CaféHaine</h1>
-				<h2>Latest articles</h2>
-			</header>
-			{% for i=1,math.min(3,#latest_articles) do art = latest_articles[i] %}
-			<section>
-				<h2>{{ art.title }}</h2>
-				<p>Posted: {{ art.date }}</p>
-				<p>{{ art.excerpt }}</p>
-				<a class="big-button" href="/blog/{{art.name}}/">Read the article</a>
-			</section>
-			{% end %}
-			<footer>
-				<a class="big-button" href="/blog/all/page_0.html">All the articles</a>
-			</footer>
-		</main>
-		{[footer]}
-	</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block main %}
+<header>
+	<h1>CaféHaine</h1>
+	<h2>Latest articles</h2>
+</header>
+{% for article in latest_articles %}
+<section>
+	<h2>{{ article.title }}</h2>
+	<p>Posted: {{ article.date }}</p>
+	<p>{{ article.excerpt()|safe }}</p>
+	<a class="big-button" href="{{ article.url() }}">Read the article</a>
+</section>
+{% endfor %}
+<footer>
+	<a class="big-button" href="/blog/all/page_0.html">All the articles</a>
+</footer>
+{% endblock %}
