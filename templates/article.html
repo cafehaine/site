@@ -5,7 +5,7 @@
 {% block main %}
 <header>
 	<h1>{{ article.title }}</h1>
-	<p>Posted {{ article.day }} {{ article.month }} {{ article.year }}</p>
+	<p>Posted on {{ article.date }}</p>
 </header>
 {{ article.render()|safe }}
 <footer>
