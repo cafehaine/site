@@ -61,19 +61,18 @@ def main():
         article = Article(path)
         articles.append(article)
 
-    articles.sort(key=lambda art: art.date)
+    articles.sort(key=lambda art: art.date, reverse=True)
 
     # generate a page for each article
     for article in articles:
         print(f"Generating page for {article.title}.")
         makedirs(f"out/articles/{article.slug}/")
         with open(f"out/articles/{article.slug}/index.html", 'w') as out:
-            out.write(article_template.render(article=article))
+            out.write(article_template.render(article=article, nav="blog"))
 
     # generate an index page
     print("Generating the index page.")
-    latest_articles = articles[::-1][:3]
-    print(latest_articles)
+    latest_articles = articles[:3]
     with open(f"out/index.html", 'w') as out:
         out.write(index_template.render(latest_articles=latest_articles))
 
@@ -88,7 +87,7 @@ def main():
     sorted_tags.sort(key=lambda t: t.name.lower())
     makedirs(f"out/tags/")
     with open(f"out/tags/index.html", 'w') as out:
-        out.write(tag_index_template.render(tags=sorted_tags))
+        out.write(tag_index_template.render(tags=sorted_tags, nav="blog"))
 
     for tag in ALL_TAGS:
         pass # TODO generate pagination for each tag

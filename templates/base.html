@@ -9,7 +9,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-		{% include 'nav.html' %}
+		{% if nav == "blog" %}
+			{% include 'nav_blog.html' %}
+		{% elif nav == "projects" %}
+			{% include 'nav_projects.html' %}
+		{% else %}
+			{% include 'nav.html' %}
+		{% endif %}
 		<main>
 			{% block main %}{% endblock %}
 		</main>
