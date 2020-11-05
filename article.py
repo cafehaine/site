@@ -3,7 +3,7 @@ A container for the articles.
 """
 
 from datetime import date
-from typing import Iterable, Set
+from typing import Iterable, List, Set
 
 import markdown
 from slugify import slugify
@@ -18,7 +18,7 @@ class Article:
     """A container for atricles."""
     def __init__(self, path: str):
         self.date: date
-        self.tags: Set[Tag]
+        self._tags: Set[Tag]
         self.title: str
         self.slug: str
 
@@ -30,6 +30,14 @@ class Article:
         ALL_ARTICLES.add(self)
 
 
+    @property
+    def tags(self) -> List[Tag]:
+        """Return a sorted list of this article's tags."""
+        output = list(self._tags)
+        output.sort(key=lambda t: t.name)
+        return output
+
+
     def similar_articles(self) -> Iterable[str]:
         """Return 3 similar articles (based on the number of common tags)."""
         similar_articles = list(ALL_ARTICLES)
@@ -39,7 +47,7 @@ class Article:
         similar_articles.sort(key=lambda art: art.title)
 
         # Sort by number of common tags
-        similar_articles.sort(key= lambda art: len(art.tags & self.tags), reverse=True)
+        similar_articles.sort(key= lambda art: len(art._tags & self._tags), reverse=True)
 
         return similar_articles[:3]
 
@@ -72,6 +80,6 @@ class Article:
             if self.slug in SLUG_BLACKLIST:
                 raise ValueError(f"Change the title for {title}.")
         elif key == "tags":
-            self.tags = set(Tag(name) for name in value.split(sep=","))
+            self._tags = set(Tag(name) for name in value.split(sep=","))
         else:
             raise ValueError(f"Unknown property: {key}.")
