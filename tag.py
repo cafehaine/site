@@ -22,4 +22,4 @@ class Tag:
     @property
     def url(self) -> str:
         """Return the url for this tag."""
-        return f"/tags/{self.slug}/"
+        return f"/tags/{self.slug}/page_0.html"

@@ -92,7 +92,12 @@ def main():
         out.write(tag_index_template.render(tags=sorted_tags, nav="blog"))
 
     for tag in ALL_TAGS:
-        pass # TODO generate pagination for each tag
+        tag_articles = [article for article in articles if tag in article._tags]
+        for index, page_articles in enumerate(paginate_by_n(tag_articles, ARTICLES_PER_PAGE)):
+            makedirs(f"out/tags/{tag.slug}")
+            print(f"Generating page {index} of the article list for tag {tag.name}.")
+            with open(f"out/tags/{tag.slug}/page_{index}.html", "w") as out:
+                out.write(page_template.render(articles=page_articles, title=f"Index page {index} for tag {tag.name}", nav="blog"))
 
     # copy static assets
     shutil.copytree("static/", "out/", dirs_exist_ok=True)
