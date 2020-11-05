@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import markdown
 from slugify import slugify
 
-from tag import Tag
+from tag import register_tags, Tag
 
 SLUG_BLACKLIST = ("tags", "browse")
 
@@ -23,13 +23,16 @@ class Article:
         self._tags: Set[Tag]
         self.title: str
         self.slug: str
+        self.draft: bool = False
 
         with open(path, 'r') as article:
             while (line := article.readline().strip()) != "---":
                 self._parse_property(line)
             self.contents = article.read()
 
-        ALL_ARTICLES.add(self)
+        if not self.draft:
+            ALL_ARTICLES.add(self)
+            register_tags(self._tags)
 
 
     @property
@@ -96,5 +99,7 @@ class Article:
                 raise ValueError(f"Change the title for {title}.")
         elif key == "tags":
             self._tags = set(Tag(name) for name in value.split(sep=","))
+        elif key == "draft":
+            self.draft = value == "yes"
         else:
             raise ValueError(f"Unknown property: {key}.")

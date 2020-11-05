@@ -10,7 +10,7 @@ from typing import Collection, List
 from jinja2 import Environment, PackageLoader, select_autoescape
 import markdown
 
-from article import Article
+from article import Article, ALL_ARTICLES
 from tag import ALL_TAGS
 
 ARTICLES_PER_PAGE = 10
@@ -52,6 +52,7 @@ def main():
     try:
         shutil.rmtree("out")
     except FileNotFoundError:
+        print("out not found.")
         pass
 
     # Find articles and load them
@@ -62,6 +63,7 @@ def main():
         article = Article(path)
         articles.append(article)
 
+    articles = list(ALL_ARTICLES)
     articles.sort(key=lambda art: art.date, reverse=True)
 
     # generate a page for each article

@@ -1,6 +1,7 @@
 title: Fighting for a dumber and faster web
 tags: html,css,static,web
 date: 0001-01-01
+draft: yes
 ---
 <section markdown="1">
 

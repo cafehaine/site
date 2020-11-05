@@ -1,6 +1,6 @@
 title: Listing and Starting modernUI applications in C#
 date: 2017-03-04
-tags: C#
+tags: C#,Programming
 ---
 <section markdown="1">
 # Context (sort of)
