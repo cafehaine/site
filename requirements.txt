@@ -1,4 +1,12 @@
+# opengraph/twitter card preview of articles
+pillow
+
+# article excerpt
 beautifulsoup4
+
+# page rendering
 jinja2
 Markdown
+
+# article and tag slugs
 git+https://github.com/mozilla/unicode-slugify
