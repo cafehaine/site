@@ -9,13 +9,13 @@
 </header>
 {{ article.render()|safe }}
 <footer>
-	<p class="tags">Tags: {% for tag in article.tags %} <a href="/tags/{{tag.slug}}">{{tag.name}}</a>{%else%}no tags.{% endfor %}</p>
+	<p class="tags">Tags: {% for tag in article.tags %} <a href="{{ tag.url }}">{{ tag.name }}</a>{% else %}no tags.{% endfor %}</p>
 	<hr>
 	{% if article.similar_articles() %}
 	<p>Similar articles:</p>
 	<ul>
 		{% for similar_article in article.similar_articles() %}
-		<li><a href="{{ similar_article.url() }}/">{{ similar_article.title }}</a></li>
+		<li><a href="{{ similar_article.url }}/">{{ similar_article.title }}</a></li>
 		{% endfor %}
 	</ul>
 	{% else %}

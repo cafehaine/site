@@ -36,7 +36,7 @@ class Article:
     def tags(self) -> List[Tag]:
         """Return a sorted list of this article's tags."""
         output = list(self._tags)
-        output.sort(key=lambda t: t.name)
+        output.sort(key=lambda t: t.name.lower())
         return output
 
 
@@ -76,6 +76,7 @@ class Article:
         return output
 
 
+    @property
     def url(self) -> str:
         """Return the url for this article."""
         return f"/articles/{self.slug}/"

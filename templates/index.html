@@ -12,7 +12,7 @@
 	<h2>{{ article.title }}</h2>
 	<p>Posted: {{ article.date }}</p>
 	<p>{{ article.excerpt()|safe }}</p>
-	<a class="big-button" href="{{ article.url() }}">Read the article</a>
+	<a class="big-button" href="{{ article.url }}">Read the article</a>
 </section>
 {% endfor %}
 <footer>

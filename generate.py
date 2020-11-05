@@ -45,6 +45,7 @@ def main():
     # Load templates
     article_template = env.get_template("article.html")
     index_template = env.get_template("index.html")
+    tag_index_template = env.get_template("tags.html")
 
     # Cleanup output directory
     try:
@@ -83,7 +84,11 @@ def main():
 
     # generate a tag based pagination
     print(f"Generating tag page index.")
-    # TODO
+    sorted_tags = list(ALL_TAGS)
+    sorted_tags.sort(key=lambda t: t.name.lower())
+    makedirs(f"out/tags/")
+    with open(f"out/tags/index.html", 'w') as out:
+        out.write(tag_index_template.render(tags=sorted_tags))
 
     for tag in ALL_TAGS:
         pass # TODO generate pagination for each tag

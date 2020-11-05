@@ -1,27 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Blog tags | CaféHaine</title>
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
-		<link rel="shortcut icon" href="/favicon.png">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	</head>
-	<body>
-		{[nav]}
-		<main>
-			<header>
-				<h1>Blog tags</h1>
-			</header>
-			<section>
-				<ul class="tags">
-					{% for _,tag in ipairs(tags) do %}
-					<li><a href="/blog/tags/{{tag.url_name}}/page_0.html">{{tag.name}}</a></li>
-					{% end %}
-				</ul>
-			</section>
-		</main>
-		{[footer]}
-	</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Blog tags{% endblock %}
+
+{% block main %}
+<header>
+	<h1>Blog tags</h1>
+</header>
+<section>
+	<ul class="tags">
+		{% for tag in tags %}
+		<li><a href="{{ tag.url }}">{{ tag.name }}</a></li>
+		{% endfor %}
+	</ul>
+</section>
+{% endblock %}
