@@ -3,6 +3,7 @@ A container for the articles.
 """
 
 from datetime import date
+import re
 from typing import Iterable, List, Set
 
 from bs4 import BeautifulSoup
@@ -62,13 +63,17 @@ class Article:
         """Return the beginning of this article (without html)."""
         # Get article "raw" text
         full_render = self.render()
-        soup = BeautifulSoup(full_render)
-        text = soup.get_text()
+        soup = BeautifulSoup(full_render, features="html.parser")
+        text = soup.get_text().strip()
+        text = re.sub("(\s|\r?\n)", " ", text)
 
-        # Extract at most the first 300 chars
-        # TODO
+        # Extract around 300 chars
+        match = re.match("^(?P<text>.{,300})(?:\s|$)", text)
+        output = match['text']
+        if not output.endswith(("?","…","!",".")):
+            output += "…"
 
-        return text[:300]
+        return output
 
 
     def url(self) -> str:
