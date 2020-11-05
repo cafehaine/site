@@ -1,6 +1,6 @@
 title: Experimenting with raid
 tags: linux,raid,mdadm
-date: 0001-01-01
+date: 2020-05-11
 draft: yes
 ---
 <section markdown="1">

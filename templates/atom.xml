@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>CaféHaine's blog</title>
+	<updated>2003-12-13T18:30:02Z</updated>
+	<id>https://cafehaine.eu/</id>
+	<icon>/favicon.png</icon>
+	<rights>Copyright © {{ year }} CaféHaine, all rights reserved</rights>
+	<link rel="self" href="https://cafehaine.eu/atom.xml"/>
+	<author>
+		<name>CaféHaine</name>
+	</author>
+	{% for article in articles %}
+	<entry>
+		<title>{{ article.title }}</title>
+		<link href="https://cafehaine.eu{{ article.url }}"/>
+		<id>https://cafehaine.eu{{ article.url }}</id>
+		<updated>{{article.date.isoformat()}}</updated>
+		<summary>{{article.excerpt()|safe}}</summary>
+		{#TODO: custom render for atom output #}
+		<content type="html">{{ article.render() }}</content>
+	</entry>
+	{% endfor %}
+</feed>

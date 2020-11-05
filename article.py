@@ -2,7 +2,7 @@
 A container for the articles.
 """
 
-from datetime import date
+from datetime import datetime, timezone
 import re
 from typing import Iterable, List, Set
 
@@ -19,7 +19,7 @@ ALL_ARTICLES: Set['Article'] = set()
 class Article:
     """A container for atricles."""
     def __init__(self, path: str):
-        self.date: date
+        self.date: datetime
         self._tags: Set[Tag]
         self.title: str
         self.slug: str
@@ -91,7 +91,8 @@ class Article:
         key = key.strip()
         value = value.strip()
         if key == "date":
-            self.date = date.fromisoformat(value)
+            self.date = datetime.fromisoformat(value)
+            self.date = self.date.astimezone(timezone.utc)
         elif key == "title":
             self.title = value
             self.slug = slugify(value, lower=False)

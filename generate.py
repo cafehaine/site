@@ -47,6 +47,7 @@ def main():
     index_template = env.get_template("index.html")
     tag_index_template = env.get_template("tags.html")
     page_template = env.get_template("page.html")
+    atom_template = env.get_template("atom.xml")
 
     # Cleanup output directory
     try:
@@ -100,6 +101,11 @@ def main():
             print(f"Generating page {index} of the article list for tag {tag.name}.")
             with open(f"out/tags/{tag.slug}/page_{index}.html", "w") as out:
                 out.write(page_template.render(articles=page_articles, title=f"Index page {index} for tag {tag.name}", nav="blog"))
+
+    # generate the atom feed
+    print(f"Generating atom feed.")
+    with open(f"out/atom.xml", "w") as out:
+        out.write(atom_template.render(articles=articles[:10]))
 
     # copy static assets
     shutil.copytree("static/", "out/", dirs_exist_ok=True)
