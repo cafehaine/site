@@ -46,6 +46,7 @@ def main():
     article_template = env.get_template("article.html")
     index_template = env.get_template("index.html")
     tag_index_template = env.get_template("tags.html")
+    page_template = env.get_template("page.html")
 
     # Cleanup output directory
     try:
@@ -79,7 +80,8 @@ def main():
     # generate a chronological pagination
     for index, page_articles in enumerate(paginate_by_n(articles, ARTICLES_PER_PAGE)):
         print(f"Generating page {index} of the article list.")
-        # TODO
+        with open(f"out/articles/page_{index}.html", "w") as out:
+            out.write(page_template.render(articles=page_articles, title=f"Index page {index}", nav="blog"))
 
     # generate a tag based pagination
     print(f"Generating tag page index.")

@@ -1,28 +1,17 @@
-<!DOCTYPE HTML>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>{{ title }} | CaféHaine</title>
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" media="(prefers-color-scheme: light)" href="/css/style_light.css">
-		<link rel="shortcut icon" href="/favicon.png">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	</head>
-	<body>
-		{[nav]}
-		<main>
-			<header>
-				<h1>{{ title }}</h1>
-			</header>
-			{% for _,article in ipairs(articles) do %}
-			<section>
-				<h2>{{ article.title }}</h2>
-				<p>Posted: {{ article.date }}</p>
-				<p>{{ article.excerpt }}</p>
-				<a class="big-button" href="/blog/{{article.name}}/">Read the article</a>
-			</section>
-			{% end %}
-		</main>
-		{[footer]}
-	</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+<header>
+	<h1>{{ title }}</h1>
+</header>
+{% for article in articles %}
+<section>
+	<h2>{{ article.title }}</h2>
+	<p>Posted: {{ article.date }}</p>
+	<p>{{ article.excerpt()|safe }}</p>
+	<a class="big-button" href="{{ article.url }}">Read the article</a>
+</section>
+{% endfor %}
+{% endblock %}
