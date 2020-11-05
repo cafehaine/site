@@ -1,3 +1,4 @@
+beautifulsoup4
 jinja2
 Markdown
 git+https://github.com/mozilla/unicode-slugify

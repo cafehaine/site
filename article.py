@@ -5,6 +5,7 @@ A container for the articles.
 from datetime import date
 from typing import Iterable, List, Set
 
+from bs4 import BeautifulSoup
 import markdown
 from slugify import slugify
 
@@ -59,7 +60,15 @@ class Article:
 
     def excerpt(self) -> str:
         """Return the beginning of this article (without html)."""
-        return "TODO" # TODO
+        # Get article "raw" text
+        full_render = self.render()
+        soup = BeautifulSoup(full_render)
+        text = soup.get_text()
+
+        # Extract at most the first 300 chars
+        # TODO
+
+        return text[:300]
 
 
     def url(self) -> str:
