@@ -70,8 +70,8 @@ class Article:
         text = soup.get_text().strip()
         text = re.sub("(\s|\r?\n)", " ", text)
 
-        # Extract around 300 chars
-        match = re.match("^(?P<text>.{,300})(?:\s|$)", text)
+        # Extract around 120 chars
+        match = re.match("^(?P<text>.{,120})(?:\s|$)", text)
         output = match['text']
         if not output.endswith(("?","…","!",".")):
             output += "…"

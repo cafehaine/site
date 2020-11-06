@@ -5,16 +5,17 @@
 {% block main %}
 <header>
 	<h1>CaféHaine</h1>
-	<h2>Latest articles</h2>
 </header>
-{% for article in latest_articles %}
 <section>
-	<h2>{{ article.title }}</h2>
+	<h2>Latest articles</h2>
+	<hr>
+	{% for article in latest_articles %}
+	<h3>{{ article.title }}</h2>
 	<p>Posted: {{ article.date }}</p>
 	<p>{{ article.excerpt()|safe }}</p>
 	<a class="big-button" href="{{ article.url }}">Read the article</a>
+	{% endfor %}
 </section>
-{% endfor %}
 <footer>
 	<a class="big-button" href="/articles/page_0.html">All the articles</a>
 </footer>

@@ -3,15 +3,14 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block main %}
-<header>
-	<h1>{{ title }}</h1>
-</header>
-{% for article in articles %}
 <section>
+	<h2>{{ title }}</h2>
+	<hr>
+	{% for article in articles %}
 	<h2>{{ article.title }}</h2>
 	<p>Posted: {{ article.date }}</p>
 	<p>{{ article.excerpt()|safe }}</p>
 	<a class="big-button" href="{{ article.url }}">Read the article</a>
+	{% endfor %}
 </section>
-{% endfor %}
 {% endblock %}

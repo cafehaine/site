@@ -24,6 +24,14 @@ body {
 /* Random components */
 /*********************/
 
+hr {
+	width: 10rem;
+	max-width: 80%;
+	border: none;
+	border-bottom: 0.1em solid var(--accent);
+	margin: 1rem auto;
+}
+
 h1,h2,h3,h4,h5,h6 {
 	line-height: 1.4em;
 	max-width: 95%;
