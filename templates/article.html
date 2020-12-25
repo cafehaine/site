@@ -14,7 +14,7 @@
 	<h1>{{ article.title }}</h1>
 	<p>Posted on {{ article.date }}</p>
 </header>
-{{ article.render()|safe }}
+{{ article.render(1)|safe }}
 <footer>
 	<p class="tags">Tags: {% for tag in article.tags %} <a href="{{ tag.url }}">{{ tag.name }}</a>{% else %}no tags.{% endfor %}</p>
 	<hr>

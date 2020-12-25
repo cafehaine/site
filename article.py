@@ -11,6 +11,7 @@ import markdown
 from slugify import slugify
 
 from tag import register_tags, Tag
+from titleoffset import TitleOffset
 
 SLUG_BLACKLIST = ("tags", "browse")
 
@@ -57,9 +58,9 @@ class Article:
         return similar_articles[:3]
 
 
-    def render(self) -> str:
+    def render(self, offset: int=0) -> str:
         """Render this article's markdown."""
-        return markdown.markdown(self.contents, output_format="html5", extensions=['md_in_html'])
+        return markdown.markdown(self.contents, output_format="html5", extensions=['md_in_html', TitleOffset(offset=offset)])
 
 
     def excerpt(self) -> str:

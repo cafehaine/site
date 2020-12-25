@@ -10,10 +10,13 @@
 	<h2>Latest articles</h2>
 	<hr>
 	{% for article in latest_articles %}
-	<h3>{{ article.title }}</h2>
+	<h3>{{ article.title }}</h3>
 	<p>Posted: {{ article.date }}</p>
 	<p>{{ article.excerpt()|safe }}</p>
 	<a class="big-button" href="{{ article.url }}">Read the article</a>
+	{% if not loop.last %}
+	<hr>
+	{% endif %}
 	{% endfor %}
 </section>
 <footer>
