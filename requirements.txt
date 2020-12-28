@@ -1,12 +1,12 @@
 # opengraph/twitter card preview of articles
-pillow
+pillow==8.0.1
 
 # article excerpt
-beautifulsoup4
+beautifulsoup4==4.9.3
 
 # page rendering
-jinja2
-Markdown
+jinja2==2.11.2
+Markdown==3.3.3
 
 # article and tag slugs
 git+https://github.com/mozilla/unicode-slugify
