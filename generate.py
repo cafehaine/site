@@ -110,6 +110,9 @@ def main():
     # copy static assets
     shutil.copytree("static/", "out/", dirs_exist_ok=True)
 
+    # Done!
+    print("DONE")
+
 
 if __name__ == "__main__":
     main()
