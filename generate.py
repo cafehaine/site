@@ -3,9 +3,9 @@ Generate my static site.
 """
 import datetime
 import glob
-from os import makedirs
+from os import makedirs, path
 import shutil
-from typing import Collection, List
+from typing import Collection, List, Set
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 import markdown
@@ -14,6 +14,8 @@ from article import Article, ALL_ARTICLES
 from tag import ALL_TAGS
 
 ARTICLES_PER_PAGE = 10
+OUTPUT_DIR = "out"
+PAGES: Set[str] = set()
 
 
 def paginate_by_n(collection: Collection, n: int) -> List[List]:
@@ -32,15 +34,28 @@ def paginate_by_n(collection: Collection, n: int) -> List[List]:
     return output
 
 
+def generate_page(url: str, contents: str) -> None:
+    """Write the contents of a page in the output directory."""
+    if url.startswith("/"):
+        raise ValueError("The url must be relative to the root of the site.")
+
+    PAGES.add(url)
+
+    article_path = path.join(OUTPUT_DIR, url)
+    makedirs(path.dirname(article_path), exist_ok=True)
+    with open(article_path, "w") as out:
+        out.write(contents)
+
+
 def main():
     """Generate the site from the articles."""
     # Setup jinja
     env = Environment(
-            loader=PackageLoader('generate', 'templates'),
-            autoescape=select_autoescape(['html', 'xml']),
-            extensions=['jinja2.ext.debug'],
+        loader=PackageLoader("generate", "templates"),
+        autoescape=select_autoescape(["html", "xml"]),
+        extensions=["jinja2.ext.debug"],
     )
-    env.globals['year'] = datetime.date.today().year
+    env.globals["year"] = datetime.date.today().year
 
     # Load templates
     article_template = env.get_template("article.html")
@@ -70,45 +85,55 @@ def main():
     # generate a page for each article
     for article in articles:
         print(f"Generating page for {article.title}.")
-        makedirs(f"out/articles/{article.slug}/")
-        with open(f"out/articles/{article.slug}/index.html", 'w') as out:
-            out.write(article_template.render(article=article, nav="blog"))
+        generate_page(
+            f"articles/{article.slug}/index.html",
+            article_template.render(article=article, nav="blog"),
+        )
 
     # generate an index page
     print("Generating the index page.")
     latest_articles = articles[:3]
-    with open(f"out/index.html", 'w') as out:
-        out.write(index_template.render(latest_articles=latest_articles))
+    generate_page(f"index.html", index_template.render(latest_articles=latest_articles))
 
     # generate a chronological pagination
     for index, page_articles in enumerate(paginate_by_n(articles, ARTICLES_PER_PAGE)):
         print(f"Generating page {index} of the article list.")
-        with open(f"out/articles/page_{index}.html", "w") as out:
-            out.write(page_template.render(articles=page_articles, title=f"Index page {index}", nav="blog"))
+        generate_page(
+            f"articles/page_{index}.html",
+            page_template.render(
+                articles=page_articles, title=f"Index page {index}", nav="blog"
+            ),
+        )
 
     # generate a tag based pagination
     print(f"Generating tag page index.")
     sorted_tags = list(ALL_TAGS)
     sorted_tags.sort(key=lambda t: t.name.lower())
-    makedirs(f"out/tags/")
-    with open(f"out/tags/index.html", 'w') as out:
-        out.write(tag_index_template.render(tags=sorted_tags, nav="blog"))
+    generate_page(
+        f"tags/index.html", tag_index_template.render(tags=sorted_tags, nav="blog")
+    )
 
     for tag in ALL_TAGS:
         tag_articles = [article for article in articles if tag in article._tags]
-        for index, page_articles in enumerate(paginate_by_n(tag_articles, ARTICLES_PER_PAGE)):
-            makedirs(f"out/tags/{tag.slug}")
+        for index, page_articles in enumerate(
+            paginate_by_n(tag_articles, ARTICLES_PER_PAGE)
+        ):
             print(f"Generating page {index} of the article list for tag {tag.name}.")
-            with open(f"out/tags/{tag.slug}/page_{index}.html", "w") as out:
-                out.write(page_template.render(articles=page_articles, title=f"Index page {index} for tag {tag.name}", nav="blog"))
+            generate_page(
+                f"tags/{tag.slug}/page_{index}.html",
+                page_template.render(
+                    articles=page_articles,
+                    title=f"Index page {index} for tag {tag.name}",
+                    nav="blog",
+                ),
+            )
 
     # generate the atom feed
     print(f"Generating atom feed.")
-    with open(f"out/atom.xml", "w") as out:
-        out.write(atom_template.render(articles=articles[:10]))
+    generate_page(f"atom.xml", atom_template.render(articles=articles[:10]))
 
     # copy static assets
-    shutil.copytree("static/", "out/", dirs_exist_ok=True)
+    shutil.copytree("static/", OUTPUT_DIR, dirs_exist_ok=True)
 
     # Done!
     print("DONE")
