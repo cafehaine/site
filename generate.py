@@ -34,12 +34,13 @@ def paginate_by_n(collection: Collection, n: int) -> List[List]:
     return output
 
 
-def generate_page(url: str, contents: str) -> None:
+def generate_page(url: str, contents: str, *, noindex: bool=False) -> None:
     """Write the contents of a page in the output directory."""
     if url.startswith("/"):
         raise ValueError("The url must be relative to the root of the site.")
 
-    PAGES.add(url)
+    if not noindex:
+       PAGES.add(url)
 
     article_path = path.join(OUTPUT_DIR, url)
     makedirs(path.dirname(article_path), exist_ok=True)
@@ -63,6 +64,7 @@ def main():
     tag_index_template = env.get_template("tags.html")
     page_template = env.get_template("page.html")
     atom_template = env.get_template("atom.xml")
+    notfound_template = env.get_template("404.html")
 
     # Cleanup output directory
     try:
@@ -132,7 +134,12 @@ def main():
     print(f"Generating atom feed.")
     generate_page(f"atom.xml", atom_template.render(articles=articles[:10]))
 
+    # generate the 404 page
+    print(f"Generating the 404 page.")
+    generate_page(f"404.html", notfound_template.render(), noindex=True)
+
     # copy static assets
+    print(f"Copying static assets.")
     shutil.copytree("static/", OUTPUT_DIR, dirs_exist_ok=True)
 
     # Done!
