@@ -2,6 +2,7 @@ title: The art of multi-threading
 date: 2017-03-16
 tags: Programming
 ---
+<!-- Licensed under the CC BY-NC-SA 4.0 -->
 <section markdown="1">
 # Introduction
 

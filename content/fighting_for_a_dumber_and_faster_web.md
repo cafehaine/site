@@ -3,6 +3,7 @@ tags: html,css,static,web
 date: 2020-11-05
 draft: yes
 ---
+<!-- Licensed under the CC BY-NC-SA 4.0 -->
 <section markdown="1">
 
 # Introduction
