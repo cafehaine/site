@@ -5,7 +5,7 @@ pillow==8.1.1
 beautifulsoup4==4.9.3
 
 # page rendering
-jinja2==2.11.2
+jinja2==2.11.3
 Markdown==3.3.3
 
 # article and tag slugs
