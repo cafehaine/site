@@ -1,5 +1,5 @@
 # opengraph/twitter card preview of articles
-pillow==8.0.1
+pillow==8.1.1
 
 # article excerpt
 beautifulsoup4==4.9.3
